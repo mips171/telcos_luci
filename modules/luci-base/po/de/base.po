@@ -270,14 +270,8 @@ msgstr "Vollständige Sendeleistung (ACTATP)"
 msgid "Alert"
 msgstr "Alarm"
 
-msgid "Alias Interface"
+msgid "Alias interface"
 msgstr "Alias-Schnittstelle"
-
-msgid "Alias of \"%s\""
-msgstr ""
-
-msgid "All Servers"
-msgstr ""
 
 msgid ""
 "Allocate IP addresses sequentially, starting from the lowest available "
@@ -3231,9 +3225,6 @@ msgstr "Startpriorität"
 msgid "Starting configuration apply…"
 msgstr "Starte Anwendung der Konfigurationsänderungen..."
 
-msgid "Starting wireless scan..."
-msgstr ""
-
 msgid "Startup"
 msgstr "Systemstart"
 
@@ -3949,7 +3940,7 @@ msgstr "Änderungen werden angewandt..."
 msgid "Waiting for command to complete..."
 msgstr "Der Befehl wird ausgeführt..."
 
-msgid "Waiting for configuration to be applied… %ds"
+msgid "Waiting for configuration to get applied… %ds"
 msgstr "Warte auf das Anwenden der Konfigurationsänderungen... %d Sekunden"
 
 msgid "Waiting for device..."
