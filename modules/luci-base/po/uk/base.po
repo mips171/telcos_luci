@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2018-07-20 11:30+0300\n"
+"PO-Revision-Date: 2018-07-16 15:45+0300\n"
 "Last-Translator: Yurii <yuripet@gmail.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -288,14 +288,8 @@ msgstr "Сумарна потужність передавання"
 msgid "Alert"
 msgstr "Тривога"
 
-msgid "Alias Interface"
+msgid "Alias interface"
 msgstr "Інтерфейс псевдоніма"
-
-msgid "Alias of \"%s\""
-msgstr "Псевдонім \"%s\""
-
-msgid "All Servers"
-msgstr "Усі сервери"
 
 msgid ""
 "Allocate IP addresses sequentially, starting from the lowest available "
