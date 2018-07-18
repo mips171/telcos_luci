@@ -843,21 +843,17 @@ div.cbi-optionals {
 }
 
 .cbi-page-actions > .cbi-button-save,
-.cbi-page-actions > .cbi-button-apply,
-.cbi-page-actions > form[method="post"] {
+.cbi-page-actions > .cbi-button-apply {
 	margin-left: auto;
 }
 
 *::-ms-backdrop,
 .cbi-page-actions > .cbi-button-save,
-.cbi-page-actions > .cbi-button-apply,
-.cbi-page-actions > form[method="post"] {
+.cbi-page-actions > .cbi-button-apply {
 	margin-left: 50%;
 }
 
-.cbi-page-actions > .cbi-button-apply + .cbi-button-save,
-.cbi-page-actions > .cbi-button-save + form[method="post"],
-.cbi-page-actions > form[method="post"] + form[method="post"] {
+.cbi-page-actions > .cbi-button-apply + .cbi-button-save {
 	margin-left: 3px;
 }
 
