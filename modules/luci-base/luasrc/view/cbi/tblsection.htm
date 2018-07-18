@@ -4,9 +4,9 @@ local rowcnt = 0
 function rowstyle()
 	rowcnt = rowcnt + 1
 	if rowcnt % 2 == 0 then
-		return " cbi-rowstyle-1"
+		return "cbi-rowstyle-1"
 	else
-		return " cbi-rowstyle-2"
+		return "cbi-rowstyle-2"
 	end
 end
 
@@ -117,37 +117,17 @@ end
 	<%- end -%>
 	<div class="cbi-section-descr"><%=self.description%></div>
 	<div class="table cbi-section-table">
-		<div class="tr cbi-section-table-titles <%=anonclass%>"<%=titlename%>>
-		<%- for i, k in pairs(self.children) do if not k.optional then -%>
-			<div class="th cbi-section-table-cell"<%=
-				width(k) ..
-				attr("data-type", k.template and k.template:gsub("^.+/", "") or "")
-			%>>
-			<%- if k.titleref then -%><a title="<%=self.titledesc or translate('Go to relevant configuration page')%>" class="cbi-title-ref" href="<%=k.titleref%>"><%- end -%>
-				<%-=k.title-%>
-			<%- if k.titleref then -%></a><%- end -%>
-			</div>
-		<%- count = count + 1; end; end; if self.sortable or self.extedit or self.addremove then -%>
-			<div class="th cbi-section-table-cell cbi-section-actions"></div>
-		<%- count = count + 1; end -%>
-		</div>
-		<div class="tr cbi-section-table-descr <%=anonclass%>">
-		<%- for i, k in pairs(self.children) do if not k.optional then -%>
-			<div class="th cbi-section-table-cell"<%=
-			width(k) ..
-			attr("data-type", k.template and k.template:gsub("^.+/", "") or "")
-		%>><%=k.description%></div>
-		<%- end; end; if self.sortable or self.extedit or self.addremove then -%>
-			<div class="th cbi-section-table-cell cbi-section-actions"></div>
-		<%- end -%>
-		</div>
-		<%- local isempty, section, i, k = true, nil, nil
+		<%-
+			render_titles()
+			render_descriptions()
+
+			local isempty, section, i, k = true, nil, nil
 		    for i, k in ipairs(self:cfgsections()) do
 				isempty = false
 				section = k
 
 				local sectionname = striptags((type(self.sectiontitle) == "function") and self:sectiontitle(section) or k)
-				local sectiontitle = ifattr(sectionname and (not self.anonymous or self.sectiontitle), "data-title", sectionname, true)
+				local sectiontitle = ifattr(sectionname and (not self.anonymous or self.sectiontitle), "data-title", sectionname)
 				local colorclass = (self.extedit or self.rowcolors) and rowstyle() or ""
 				local scope = {
 					valueheader = "cbi/cell_valueheader",
