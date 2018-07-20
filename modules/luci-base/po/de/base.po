@@ -270,8 +270,17 @@ msgstr "Vollständige Sendeleistung (ACTATP)"
 msgid "Alert"
 msgstr "Alarm"
 
+msgid "Alias Interface"
+msgstr ""
+
 msgid "Alias interface"
 msgstr "Alias-Schnittstelle"
+
+msgid "Alias of \"%s\""
+msgstr ""
+
+msgid "All Servers"
+msgstr ""
 
 msgid ""
 "Allocate IP addresses sequentially, starting from the lowest available "
@@ -3224,6 +3233,9 @@ msgstr "Startpriorität"
 
 msgid "Starting configuration apply…"
 msgstr "Starte Anwendung der Konfigurationsänderungen..."
+
+msgid "Starting wireless scan..."
+msgstr ""
 
 msgid "Startup"
 msgstr "Systemstart"

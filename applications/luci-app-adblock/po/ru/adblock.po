@@ -209,6 +209,9 @@ msgstr ""
 msgid "Max. Download Queue"
 msgstr "Максимальная очередь загрузки"
 
+msgid "Name"
+msgstr ""
+
 msgid "No"
 msgstr "Нет"
 

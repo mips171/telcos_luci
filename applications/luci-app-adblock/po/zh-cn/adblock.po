@@ -143,7 +143,7 @@ msgstr "在 adblock 进程启动后清空 DNS 缓存。"
 msgid ""
 "For further information <a href=\"%s\" target=\"_blank\">check the online "
 "documentation</a>"
-msgstr "进一步信息<a href=\"%s\" target=\"_blank\">请访问在线文档</a>"
+msgstr "进一步信息<a href=\"%s\" target=\"_blank\">请访问在线文档"
 
 msgid ""
 "For further performance improvements you can raise this value, e.g. '8' or "
@@ -167,8 +167,8 @@ msgstr "最后运行"
 
 msgid ""
 "List of available network interfaces. Usually the startup will be triggered "
-"by the 'wan' interface."
-msgstr "可用网络接口列表。通常启动将由 “wan” 接口触发。"
+"by the 'wan' interface.<br />"
+msgstr "可用网络接口列表。通常启动将由 “wan” 接口触发。<br />"
 
 msgid ""
 "List of supported DNS backends with their default list export directory."
@@ -185,6 +185,9 @@ msgstr ""
 
 msgid "Max. Download Queue"
 msgstr "最大下载队列"
+
+msgid "Name"
+msgstr ""
 
 msgid "No"
 msgstr "否"
@@ -251,18 +254,13 @@ msgstr "保存"
 
 msgid ""
 "Send notification emails in case of a processing error or if domain count is "
-"&le; 0."
-msgstr "如果发生错误或域计数 &le; 0，发送通知电子邮件。"
-
-msgid ""
-"Set the nice level to 'low priority' and the adblock background processing "
-"will take less resources from the system."
-msgstr ""
+"&le; 0.<br />"
+msgstr "如果发生错误或域计数 &le; 0，发送通知电子邮件。<br />"
 
 msgid ""
 "Size of the download queue to handle downloads &amp; list processing in "
-"parallel (default '4')."
-msgstr "处理下载队列的大小 ＆amp; 并行处理列表（默认 “4”）。"
+"parallel (default '4').<br />"
+msgstr "处理下载队列的大小 ＆amp; 并行处理列表（默认 “4”）。<br />"
 
 msgid "Startup Trigger"
 msgstr "启动触发器"
@@ -283,12 +281,6 @@ msgstr "生成的 blocklist 'adb_list.overall'的目标目录。"
 
 msgid "The file size is too large for online editing in LuCI (&ge; 100 KB)."
 msgstr "文件过大，无法使用 LuCI 的在线编辑（&ge; 100 KB）。"
-
-msgid "The syslog output, pre-filtered for adblock related messages only."
-msgstr "此表单显示系统日志输出，仅针对 adblock 相关的消息进行了预筛选。"
-
-msgid "This change requires a manual service stop/re-start to take effect."
-msgstr ""
 
 msgid ""
 "This form allows you to modify the content of the adblock blacklist (%s)."

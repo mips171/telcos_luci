@@ -278,8 +278,17 @@ msgstr "Agregacja siły transmisji (ACTATP)"
 msgid "Alert"
 msgstr "Alarm"
 
+msgid "Alias Interface"
+msgstr ""
+
 msgid "Alias interface"
 msgstr "Alias interfejsu"
+
+msgid "Alias of \"%s\""
+msgstr ""
+
+msgid "All Servers"
+msgstr ""
 
 msgid ""
 "Allocate IP addresses sequentially, starting from the lowest available "
@@ -294,7 +303,7 @@ msgid "Allow <abbr title=\"Secure Shell\">SSH</abbr> password authentication"
 msgstr "Pozwól na logowanie <abbr title=\"Secure Shell\">SSH</abbr>"
 
 msgid "Allow AP mode to disconnect STAs based on low ACK condition"
-msgstr "Pozwól aby tryb AP rozłączał stacje STA w oparciu o niski stan ACK"
+msgstr ""
 
 msgid "Allow all except listed"
 msgstr "Pozwól wszystkim oprócz wymienionych"
@@ -333,8 +342,6 @@ msgid ""
 "Always use 40MHz channels even if the secondary channel overlaps. Using this "
 "option does not comply with IEEE 802.11n-2009!"
 msgstr ""
-"Zawsze używaj kanału 40 MHz, nawet jeśli kanał dodatkowy nachodzi na inny. "
-"Używanie tej opcji nie jest zgodne z IEEE 802.11n-2009!"
 
 msgid "Annex"
 msgstr ""
@@ -534,7 +541,7 @@ msgid "Band"
 msgstr ""
 
 msgid "Beacon Interval"
-msgstr "Interwał Beaconu"
+msgstr ""
 
 msgid ""
 "Below is the determined list of files to backup. It consists of changed "
@@ -856,7 +863,7 @@ msgid "DSL line mode"
 msgstr ""
 
 msgid "DTIM Interval"
-msgstr "Interwał DTIM"
+msgstr ""
 
 msgid "DUID"
 msgstr "DUID"
@@ -897,7 +904,7 @@ msgid "Delete this network"
 msgstr "Usuń tą sieć"
 
 msgid "Delivery Traffic Indication Message Interval"
-msgstr "Interwał komunikatu o wskazaniu dostawy ruchu"
+msgstr ""
 
 msgid "Description"
 msgstr "Opis"
@@ -958,7 +965,7 @@ msgid "Disabled (default)"
 msgstr "Wyłączone (domyślnie)"
 
 msgid "Disassociate On Low Acknowledgement"
-msgstr "Rozłączaj przy niskim stanie ramek ACK"
+msgstr ""
 
 msgid "Discard upstream RFC1918 responses"
 msgstr "Odrzuć wychodzące odpowiedzi RFC1918"
@@ -1327,7 +1334,7 @@ msgid "Force"
 msgstr "Wymuś"
 
 msgid "Force 40MHz mode"
-msgstr "Wymuś tryb 40MHz"
+msgstr ""
 
 msgid "Force CCMP (AES)"
 msgstr "Wymuś CCMP (AES)"
@@ -2010,7 +2017,7 @@ msgid "Lowest leased address as offset from the network address."
 msgstr "Najniższy wydzierżawiony adres jako offset dla adresu sieci."
 
 msgid "MAC"
-msgstr "MAC"
+msgstr ""
 
 msgid "MAC-Address"
 msgstr "Adres MAC"
@@ -2260,7 +2267,7 @@ msgid "No rules in this chain"
 msgstr "Brak zasad w tym łańcuchu"
 
 msgid "No scan results available yet..."
-msgstr "Brak wyników skanowania..."
+msgstr ""
 
 msgid "No zone assigned"
 msgstr "Brak przypisanej strefy"
@@ -2699,8 +2706,6 @@ msgid ""
 "Query all available upstream <abbr title=\"Domain Name System\">DNS</abbr> "
 "servers"
 msgstr ""
-"Zapytaj o wszystkie dostępne serwery <abbr title=\"Domain Name System\">DNS</"
-"abbr> "
 
 msgid "R0 Key Lifetime"
 msgstr ""
@@ -2739,8 +2744,9 @@ msgid "Radius-Authentication-Server"
 msgstr "Serwer Radius-Authentication"
 
 msgid "Raw hex-encoded bytes. Leave empty unless your ISP require this"
-msgstr "Surowe bajty kodowane szesnastkowo. Pozostaw puste, chyba że "
-"wymaga tego dostawca internetowy"
+msgstr ""
+"Surowe bajty kodowane szesnastkowo. Pozostaw puste, chyba że wymaga tego "
+"dostawca internetowy"
 
 msgid ""
 "Read <code>/etc/ethers</code> to configure the <abbr title=\"Dynamic Host "
@@ -2996,8 +3002,9 @@ msgid "Scan"
 msgstr "Skanuj"
 
 msgid "Scan request failed"
-msgstr "Próba skanowania nie powiodła się"
+msgstr ""
 
+# Raczej nie stosuje się kilku dużych liter w tym samym
 msgid "Scheduled Tasks"
 msgstr "Zaplanowane Zadania"
 
@@ -3059,7 +3066,7 @@ msgid "Short GI"
 msgstr ""
 
 msgid "Short Preamble"
-msgstr "Krótki Wstęp"
+msgstr ""
 
 msgid "Show current backup file list"
 msgstr "Pokaż aktualną listę plików do backupu"
@@ -3170,6 +3177,9 @@ msgstr "Zatwierdzanie konfiguracji…"
 
 msgid "Starting wireless scan..."
 msgstr "Rozpoczynanie skanowania..."
+
+msgid "Starting wireless scan..."
+msgstr ""
 
 msgid "Startup"
 msgstr "Autostart"
@@ -4032,7 +4042,7 @@ msgid "minutes"
 msgstr "minuty"
 
 msgid "mixed WPA/WPA2"
-msgstr "mieszany WPA/WPA2"
+msgstr ""
 
 msgid "no"
 msgstr "nie"

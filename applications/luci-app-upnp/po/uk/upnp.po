@@ -95,7 +95,7 @@ msgid "General Settings"
 msgstr "Загальні настройки"
 
 msgid "Host"
-msgstr "Вузол"
+msgstr ""
 
 msgid "Internal addresses"
 msgstr "Внутрішні адреси"
@@ -150,7 +150,7 @@ msgid "Universal Plug & Play"
 msgstr "Universal Plug & Play"
 
 msgid "Unknown"
-msgstr "Невідомо"
+msgstr ""
 
 msgid "Uplink"
 msgstr "Висхідне з’єднання"
