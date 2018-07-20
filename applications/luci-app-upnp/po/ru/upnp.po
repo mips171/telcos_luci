@@ -98,7 +98,7 @@ msgid "General Settings"
 msgstr "Основные настройки"
 
 msgid "Host"
-msgstr ""
+msgstr "Хост"
 
 msgid "Internal addresses"
 msgstr "Внутренние адреса"
