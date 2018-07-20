@@ -282,7 +282,7 @@ msgid "Alias of \"%s\""
 msgstr ""
 
 msgid "All Servers"
-msgstr ""
+msgstr "全てのサーバー"
 
 msgid ""
 "Allocate IP addresses sequentially, starting from the lowest available "
@@ -296,7 +296,7 @@ msgid "Allow <abbr title=\"Secure Shell\">SSH</abbr> password authentication"
 msgstr "<abbr title=\"Secure Shell\">SSH</abbr> パスワード認証を許可します。"
 
 msgid "Allow AP mode to disconnect STAs based on low ACK condition"
-msgstr ""
+msgstr "AP モード動作時に、低 ACK（確認応答）状態の STA の切断を許可します。"
 
 msgid "Allow all except listed"
 msgstr "リスト内の端末からのアクセスを禁止"
@@ -336,11 +336,6 @@ msgid ""
 msgstr ""
 "セカンダリ チャンネルの重複にかかわらず、常に 40MHz チャンネルを使用します。"
 "このオプションの使用は、 IEEE 802.11n-2009 に準拠しません！"
-
-msgid ""
-"Always use 40MHz channels even if the secondary channel overlaps. Using this "
-"option does not comply with IEEE 802.11n-2009!"
-msgstr ""
 
 msgid "Annex"
 msgstr ""
@@ -536,7 +531,7 @@ msgid "Band"
 msgstr ""
 
 msgid "Beacon Interval"
-msgstr ""
+msgstr "ビーコン間隔"
 
 msgid ""
 "Below is the determined list of files to backup. It consists of changed "
@@ -862,7 +857,7 @@ msgid "DSL line mode"
 msgstr ""
 
 msgid "DTIM Interval"
-msgstr ""
+msgstr "DTIM インターバル"
 
 msgid "DUID"
 msgstr "DUID"
@@ -903,7 +898,7 @@ msgid "Delete this network"
 msgstr "ネットワークを削除します"
 
 msgid "Delivery Traffic Indication Message Interval"
-msgstr ""
+msgstr "Delivery Traffic Indication Message インターバル"
 
 msgid "Description"
 msgstr "詳細"
@@ -964,7 +959,7 @@ msgid "Disabled (default)"
 msgstr "無効（デフォルト）"
 
 msgid "Disassociate On Low Acknowledgement"
-msgstr ""
+msgstr "低 Acknowledgement 時のアソシエーション解除"
 
 msgid "Discard upstream RFC1918 responses"
 msgstr "RFC1918の応答を破棄します"
@@ -1332,7 +1327,7 @@ msgid "Force"
 msgstr "強制"
 
 msgid "Force 40MHz mode"
-msgstr ""
+msgstr "強制 40MHz モード"
 
 msgid "Force CCMP (AES)"
 msgstr "CCMP (AES) を使用"
@@ -2261,7 +2256,7 @@ msgid "No rules in this chain"
 msgstr "チェイン内にルールがありません"
 
 msgid "No scan results available yet..."
-msgstr ""
+msgstr "利用可能なスキャン結果はまだありません..."
 
 msgid "No zone assigned"
 msgstr "ゾーンが設定されていません"
@@ -2701,6 +2696,8 @@ msgid ""
 "Query all available upstream <abbr title=\"Domain Name System\">DNS</abbr> "
 "servers"
 msgstr ""
+"アップストリームの利用可能な全 <abbr title=\"Domain Name System\">DNS</abbr> "
+"サーバを問い合わせます"
 
 msgid "R0 Key Lifetime"
 msgstr ""
@@ -2999,7 +2996,7 @@ msgid "Scan"
 msgstr "スキャン"
 
 msgid "Scan request failed"
-msgstr ""
+msgstr "スキャン要求が失敗しました"
 
 msgid "Scheduled Tasks"
 msgstr "スケジュールタスク"
@@ -3059,7 +3056,7 @@ msgid "Short GI"
 msgstr "Short GI"
 
 msgid "Short Preamble"
-msgstr ""
+msgstr "Short Preamble"
 
 msgid "Show current backup file list"
 msgstr "現在のバックアップファイルのリストを表示する"
@@ -3166,7 +3163,7 @@ msgid "Starting configuration apply…"
 msgstr "設定の適用を開始しています..."
 
 msgid "Starting wireless scan..."
-msgstr ""
+msgstr "無線LANのスキャンを開始しています..."
 
 msgid "Startup"
 msgstr "スタートアップ"
@@ -4022,7 +4019,7 @@ msgid "minutes"
 msgstr "分"
 
 msgid "mixed WPA/WPA2"
-msgstr ""
+msgstr "mixed WPA/WPA2"
 
 msgid "no"
 msgstr "いいえ"
