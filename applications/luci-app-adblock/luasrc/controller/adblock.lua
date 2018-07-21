@@ -6,9 +6,11 @@ module("luci.controller.adblock", package.seeall)
 local sys   = require("luci.sys")
 local util  = require("luci.util")
 local http  = require("luci.http")
+local templ = require("luci.template")
 local i18n  = require("luci.i18n")
 local json  = require("luci.jsonc")
 local uci   = require("luci.model.uci").cursor()
+local fs    = require("nixio.fs")
 
 function index()
 	if not nixio.fs.access("/etc/config/adblock") then
@@ -28,12 +30,12 @@ function index()
 	entry({"admin", "services", "adblock", "action"}, call("adb_action"), nil).leaf = true
 end
 
-function adb_action(name)
-	if name == "do_suspend" then
+function adb_action(value)
+	if value == "Suspend" then
 		luci.sys.call("/etc/init.d/adblock suspend >/dev/null 2>&1")
-	elseif name == "do_resume" then
+	elseif value == "Resume" then
 		luci.sys.call("/etc/init.d/adblock resume >/dev/null 2>&1")
-	elseif name == "do_refresh" then
+	elseif value == "Refresh" then
 		luci.sys.call("/etc/init.d/adblock reload >/dev/null 2>&1")
 	end
 	luci.http.prepare_content("text/plain")	
@@ -46,10 +48,12 @@ function status_update()
 
 	rt_file = uci:get("adblock", "global", "adb_rtfile") or "/tmp/adb_runtime.json"
 
-	if nixio.fs.access(rt_file) then
-		content = json.parse(nixio.fs.readfile(rt_file) or "")
-		http.prepare_content("application/json")
-		http.write_json(content)
+	if fs.access(rt_file) then
+		content = json.parse(fs.readfile(rt_file))
+		if content then
+			http.prepare_content("application/json")
+			http.write_json(content)
+		end
 	end
 end
 
