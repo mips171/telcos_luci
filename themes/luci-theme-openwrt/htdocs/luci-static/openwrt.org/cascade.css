@@ -855,7 +855,8 @@ div.cbi-optionals {
 	margin-left: 50%;
 }
 
-.cbi-page-actions > .cbi-button-apply + .cbi-button-save {
+.cbi-page-actions > .cbi-button-apply + .cbi-button-save,
+.cbi-page-actions > .cbi-button-save + form[method="post"] {
 	margin-left: 3px;
 }
 
