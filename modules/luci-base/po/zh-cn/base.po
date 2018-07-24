@@ -266,13 +266,13 @@ msgid "Alert"
 msgstr "警戒"
 
 msgid "Alias Interface"
-msgstr ""
+msgstr "接口别名"
 
 msgid "Alias of \"%s\""
-msgstr ""
+msgstr "\"%s\" 的别名"
 
 msgid "All Servers"
-msgstr ""
+msgstr "所有服务器"
 
 msgid ""
 "Allocate IP addresses sequentially, starting from the lowest available "
@@ -286,7 +286,7 @@ msgid "Allow <abbr title=\"Secure Shell\">SSH</abbr> password authentication"
 msgstr "允许 <abbr title=\"Secure Shell\">SSH</abbr> 密码验证"
 
 msgid "Allow AP mode to disconnect STAs based on low ACK condition"
-msgstr ""
+msgstr "允许 AP 模式时在 low ACK 的情况下断开无线终端"
 
 msgid "Allow all except listed"
 msgstr "仅允许列表外"
@@ -323,6 +323,7 @@ msgid ""
 "Always use 40MHz channels even if the secondary channel overlaps. Using this "
 "option does not comply with IEEE 802.11n-2009!"
 msgstr ""
+"即使辅助信道重叠，也始终使用 40MHz 信道。使用此选项不符合IEEE 802.11n-2009！"
 
 msgid "Annex"
 msgstr "Annex"
@@ -516,7 +517,7 @@ msgid "Band"
 msgstr "频宽"
 
 msgid "Beacon Interval"
-msgstr ""
+msgstr "Beacon 间隔"
 
 msgid ""
 "Below is the determined list of files to backup. It consists of changed "
@@ -820,7 +821,7 @@ msgid "DSL line mode"
 msgstr "DSL 线路模式"
 
 msgid "DTIM Interval"
-msgstr ""
+msgstr "DTIM 间隔"
 
 msgid "DUID"
 msgstr "DUID"
@@ -861,7 +862,7 @@ msgid "Delete this network"
 msgstr "删除此网络"
 
 msgid "Delivery Traffic Indication Message Interval"
-msgstr ""
+msgstr "发送流量指示消息间隔"
 
 msgid "Description"
 msgstr "描述"
@@ -885,7 +886,7 @@ msgid "Device unreachable!"
 msgstr "无法连接到设备"
 
 msgid "Device unreachable! Still waiting for device..."
-msgstr "无法连接到设备！仍旧等待设备…"
+msgstr "无法连接到设备！仍旧等待设备..."
 
 msgid "Diagnostics"
 msgstr "网络诊断"
@@ -922,10 +923,7 @@ msgid "Disabled (default)"
 msgstr "已禁用（默认）"
 
 msgid "Disassociate On Low Acknowledgement"
-msgstr "在低 Ack 应答时断开连接"
-
-msgid "Disassociate On Low Acknowledgement"
-msgstr ""
+msgstr "在 Low Acknowledgement 时断开连接"
 
 msgid "Discard upstream RFC1918 responses"
 msgstr "丢弃 RFC1918 上行响应数据"
@@ -1279,7 +1277,7 @@ msgid "Force"
 msgstr "强制"
 
 msgid "Force 40MHz mode"
-msgstr ""
+msgstr "强制 40MHz 模式"
 
 msgid "Force CCMP (AES)"
 msgstr "强制 CCMP（AES）"
@@ -1944,7 +1942,7 @@ msgid "Lowest leased address as offset from the network address."
 msgstr "网络地址的起始分配基址。"
 
 msgid "MAC"
-msgstr ""
+msgstr "MAC"
 
 msgid "MAC-Address"
 msgstr "MAC 地址"
@@ -2192,7 +2190,7 @@ msgid "No rules in this chain"
 msgstr "本链没有规则"
 
 msgid "No scan results available yet..."
-msgstr ""
+msgstr "还没有可用的扫描结果..."
 
 msgid "No zone assigned"
 msgstr "未指定区域"
@@ -2625,7 +2623,7 @@ msgstr "质量"
 msgid ""
 "Query all available upstream <abbr title=\"Domain Name System\">DNS</abbr> "
 "servers"
-msgstr ""
+msgstr "查询所有可用的上游 <abbr title=\"Domain Name System\">DNS</abbr> 服务器"
 
 msgid "R0 Key Lifetime"
 msgstr "R0 密钥生存期"
@@ -2683,8 +2681,8 @@ msgid ""
 "Really delete this wireless network? The deletion cannot be undone! You "
 "might lose access to this device if you are connected via this network."
 msgstr ""
-"确定要删除此无线网络？删除操作无法撤销！若您删除此无线网络，可能导致无法再访"
-"问此设备。"
+"确定要删除此无线网络？删除操作无法撤销！若您删除此无线网络，可能导致无法再访问"
+"此设备。"
 
 msgid "Really reset all changes?"
 msgstr "确定要放弃所有更改？"
@@ -2919,7 +2917,7 @@ msgid "Scan"
 msgstr "扫描"
 
 msgid "Scan request failed"
-msgstr ""
+msgstr "扫描请求失败"
 
 msgid "Scheduled Tasks"
 msgstr "计划任务"
@@ -2979,7 +2977,7 @@ msgid "Short GI"
 msgstr "Short GI"
 
 msgid "Short Preamble"
-msgstr ""
+msgstr "Short Preamble"
 
 msgid "Show current backup file list"
 msgstr "显示当前备份文件列表"
@@ -3088,7 +3086,7 @@ msgid "Starting wireless scan..."
 msgstr "正在启动无线扫描…"
 
 msgid "Starting wireless scan..."
-msgstr ""
+msgstr "正在启动无线扫描..."
 
 msgid "Startup"
 msgstr "启动项"
@@ -3258,9 +3256,9 @@ msgid ""
 "or revert all pending changes to keep the currently working configuration "
 "state."
 msgstr ""
-"在应用挂起的更改后 %d 秒内无法连接到此设备，出于安全原因导致配置回滚。如果您"
-"认为配置的更改是正确的，请执行强制应用。或者您可以在再次尝试应用之前解除此警"
-"告并编辑配置，或者恢复所有挂起的更改以保持当前正在工作的配置状态。"
+"在应用挂起的更改后 %d 秒内无法连接到此设备，出于安全原因导致配置回滚。如果您认"
+"为配置的更改是正确的，请执行强制应用。或者您可以在再次尝试应用之前解除"
+"此警告并编辑配置，或者恢复所有挂起的更改以保持当前正在工作的配置状态。"
 
 msgid ""
 "The device file of the memory or partition (<abbr title=\"for example\">e.g."
@@ -3901,7 +3899,7 @@ msgid "minutes"
 msgstr "分钟"
 
 msgid "mixed WPA/WPA2"
-msgstr ""
+msgstr "mixed WPA/WPA2"
 
 msgid "no"
 msgstr "否"
