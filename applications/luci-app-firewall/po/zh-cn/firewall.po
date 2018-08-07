@@ -8,7 +8,7 @@ msgstr ""
 "Language-Team:  <debian-l10n-chinese@lists.debian.org>\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"PO-Revision-Date: 2018-11-14 08:40+0800\n"
+"PO-Revision-Date: 2018-08-08 08:28+0800\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
 msgid "%s in %s"
@@ -54,7 +54,7 @@ msgid "Add"
 msgstr "添加"
 
 msgid "Add and edit..."
-msgstr "添加并编辑..."
+msgstr "添加并编辑…"
 
 msgid "Advanced Settings"
 msgstr "高级设置"
@@ -185,13 +185,13 @@ msgid "From %s in %s with source %s and %s"
 msgstr "来自 %s 位于 %s 源端口 %s 源 MAC %s"
 
 msgid "From %s on <var>this device</var>"
-msgstr "来自 %s 在<var>此设备</var>上"
+msgstr "来自 %s 位于<var>本设备</var>"
 
 msgid "From %s on <var>this device</var> with source %s"
-msgstr "来自 %s 在<var>此设备</var>上源于 %s"
+msgstr "来自 %s 位于<var>本设备</var>源于 %s"
 
 msgid "From %s on <var>this device</var> with source %s and %s"
-msgstr "来自 %s 在<var>此设备</var>上源端口 %s 源 MAC %s"
+msgstr "来自 %s 位于<var>本设备</var>源端口 %s 源 MAC %s"
 
 msgid "General Settings"
 msgstr "基本设置"
@@ -525,13 +525,13 @@ msgid "Tuesday"
 msgstr "星期二"
 
 msgid "Unnamed SNAT"
-msgstr "未命名的 SNAT"
+msgstr "未命名 SNAT"
 
 msgid "Unnamed forward"
-msgstr "未命名的转发"
+msgstr "未命名转发"
 
 msgid "Unnamed rule"
-msgstr "未命名的规则"
+msgstr "未命名规则"
 
 msgid "Via %s"
 msgstr "通过 %s"
