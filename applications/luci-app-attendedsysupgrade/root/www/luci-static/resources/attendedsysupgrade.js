@@ -125,6 +125,36 @@ function uci_get(option) {
 
 ubus_counter = 0;
 ubus_closed = 0;
+function ubus_call(command, argument, params, variable) {
+	var request_data = {};
+	request_data.jsonrpc = "2.0";
+	request_data.id = ubus_counter;
+	request_data.method = "call";
+	request_data.params = [ data.ubus_rpc_session, command, argument, params ]
+	request_json = JSON.stringify(request_data)
+	ubus_counter++;
+	var request = new XMLHttpRequest();
+	request.open("POST", ubus_url, true);
+	request.setRequestHeader("Content-type", "application/json");
+	request.onload = function(event) {
+		if(request.status === 200) {
+			var response = JSON.parse(request.responseText)
+			if(!("error" in response) && "result" in response) {
+				if(response.result.length === 2) {
+					if(command === "uci") {
+						data[variable] = response.result[1].value
+					} else {
+						data[variable] = response.result[1][variable]
+					}
+				}
+			} else {
+				error_box("<b>Ubus call failed:</b><br />Request: " + request_json + "<br />Response: " + JSON.stringify(response))
+			}
+			ubus_closed++;
+		}
+	}
+	request.send(request_json);
+}
 
 function ubus_call(command, argument, params, variable) {
     var request_data = {};
@@ -183,57 +213,59 @@ function upgrade_check() {
 }
 
 function upgrade_check_callback(request_text) {
-    var request_json = JSON.parse(request_text)
+	var request_json = JSON.parse(request_text)
 
-    // create simple output to tell user what's going to be upgrade (release/packages)
-    var info_output = ""
-    if (request_json.version) {
-        info_output += "<h3>New release <b>" + request_json.version + "</b> available</h3>"
-        info_output += "Installed version: " + data.release.version
-        request_dict.version = request_json.version;
-    }
-    if (request_json.upgrades) {
-        if (request_json.upgrades != {}) {
-            info_output += "<h3>Package upgrades available</h3>"
-            for (var upgrade in request_json.upgrades) {
-                info_output += "<b>" + upgrade + "</b>: " + request_json.upgrades[upgrade][1] + " to " + request_json.upgrades[upgrade][0] + "<br />"
-            }
-        }
-    }
-    data.packages = request_json.packages
-    set_status("success", info_output)
+	// create simple output to tell user what's going to be upgrade (release/packages)
+	var info_output = ""
+	if(request_json.version != undefined) {
+		info_output += "<h3>New firmware release available</h3>"
+		info_output += data.release.version + " to " + request_json.version
+		data.latest_version = request_json.version;
+	}
+	if(request_json.upgrades != undefined) {
+		info_output += "<h3>Package upgrades available</h3>"
+		for (upgrade in request_json.upgrades) {
+			info_output += "<b>" + upgrade + "</b>: " + request_json.upgrades[upgrade][1] + " to " + request_json.upgrades[upgrade][0] + "<br />"
+		}
+	}
+	data.packages = request_json.packages
+	info_box(info_output)
 
-    if (data.advanced_mode == 1) {
-        show("#edit_button");
-    }
-    var upgrade_button = $("#upgrade_button")
-    upgrade_button.value = "Request firmware";
-    upgrade_button.style.display = "block";
-    upgrade_button.disabled = false;
-    upgrade_button.onclick = upgrade_request;
+	if(data.advanced_mode == 1) {
+		show("#edit_button");
+	}
+	var upgrade_button = $("#upgrade_button")
+	upgrade_button.value = "Request firmware";
+	upgrade_button.style.display = "block";
+	upgrade_button.disabled = false;
+	upgrade_button.onclick = upgrade_request;
+
 }
 
 function upgrade_request() {
-    // Request firmware using the following parameters
-    // distro, version, target, board_name/model, packages
-    $("#upgrade_button").disabled = true;
-    hide("#edit_packages");
-    hide("#edit_button");
-    hide("#keep_container");
+	// Request the image
+	// Needed values
+	// version/release
+	// board_name or model (server tries to find the correct profile)
+	// packages
+	// The rest is added by server_request()
+	$("#upgrade_button").disabled = true;
+	hide("#edit_packages");
+	hide("#edit_button");
+	hide("#keep_container");
 
-    // remove "installed" entry as unused by build requests
-    delete request_dict.installed
-    // add board info to let server determine profile
-    request_dict.board_name = data.board_name
-    request_dict.board = data.board_name
-    request_dict.model = data.model
+	var request_dict = {}
+	request_dict.version = data.latest_version;
+	request_dict.board = data.board_name
+	request_dict.model = data.model
 
-    if (data.edit_packages == true) {
-        request_dict.packages = $("#edit_packages").value.split("\n")
-    } else {
-        request_dict.packages = data.packages;
-    }
-    server_request("api/upgrade-request", upgrade_request_callback)
+	if(data.edit_packages == true) {
+		request_dict.packages = $("#edit_packages").value.split("\n")
+	} else {
+		request_dict.packages = data.packages;
+	}
+
+	server_request(request_dict, "api/upgrade-request", upgrade_request_callback)
 }
 
 function upgrade_request_callback(request) {
@@ -335,84 +367,84 @@ function download_image() {
     download_request.send();
 }
 
-function server_request(path, callback) {
-    var request_json;
-    var request = new XMLHttpRequest();
-    request.open("POST", data.url + "/" + path, true);
-    request.setRequestHeader("Content-type", "application/json");
-    request.send(JSON.stringify(request_dict));
-    request.onerror = function(e) {
-        set_status("danger", "Upgrade server down or could not connect")
-        show("#server_div");
-    }
-    request.addEventListener('load', function(event) {
-        var request_text = request.responseText;
-        if (request.status === 200) {
-            callback(request_text)
+function server_request(request_dict, path, callback) {
+	request_dict.distro = data.release.distribution;
+	request_dict.target = data.release.target.split("\/")[0];
+	request_dict.subtarget = data.release.target.split("\/")[1];
+	var request = new XMLHttpRequest();
+	request.open("POST", data.url + "/" + path, true);
+	request.setRequestHeader("Content-type", "application/json");
+	request.send(JSON.stringify(request_dict));
+	request.onerror = function(e) {
+		error_box("Upgrade server down or could not connect")
+		show("#server_div");
+	}
+	request.addEventListener('load', function(event) {
+		request_text = request.responseText;
+		if (request.status === 200) {
+			callback(request_text)
 
-        } else if (request.status === 202) {
-            var imagebuilder = request.getResponseHeader("X-Imagebuilder-Status");
-            if (imagebuilder === "queue") {
-                // in queue
-                var queue = request.getResponseHeader("X-Build-Queue-Position");
-                set_status("info", "In build queue position " + queue, true)
-                console.log("queued");
-            } else if (imagebuilder === "building") {
-                set_status("info", "Building image", true);
-                console.log("building");
-            } else {
-                // fallback if for some reasons the headers are missing e.g. browser blocks access
-                set_status("info", "Processing request", true);
-                console.log(imagebuilder)
-            }
-            setTimeout(function() {
-                server_request(path, callback)
-            }, 5000)
+		} else if (request.status === 202) {
+			var imagebuilder = request.getResponseHeader("X-Imagebuilder-Status");
+			if(imagebuilder === "queue") {
+				// in queue
+				var queue = request.getResponseHeader("X-Build-Queue-Position");
+				info_box("In build queue position " + queue, true)
+				console.log("queued");
+			} else if(imagebuilder === "initialize") {
+				info_box("Setting up ImageBuilder", true)
+				console.log("Setting up imagebuilder");
+			} else if(imagebuilder === "building") {
+				info_box("Building image", true);
+				console.log("building");
+			} else {
+				// fallback if for some reasons the headers are missing e.g. browser blocks access
+				info_box("Processing request", true);
+				console.log(imagebuilder)
+			}
+			setTimeout(function() { server_request(request_dict, path, callback) }, 5000)
 
-        } else if (request.status === 204) {
-            // no upgrades available
-            set_status("success", "No upgrades available")
+		} else if (request.status === 204) {
+			// no upgrades available
+			info_box("No upgrades available")
 
-        } else if (request.status === 400) {
-            // bad request
-            request_json = JSON.parse(request_text)
-            set_status("danger", request_json.error)
+		} else if (request.status === 400) {
+			// bad request
+			request_json = JSON.parse(request_text)
+			error_box(request_json.error)
 
-        } else if (request.status === 412) {
-            // this is a bit generic
-            set_status("danger", "Unsupported device, release, target, subtraget or board")
+		} else if (request.status === 412) {
+			// this is a bit generic
+			error_box("Unsupported device, release, target, subtraget or board")
 
-        } else if (request.status === 413) {
-            set_status("danger", "No firmware created due to image size. Try again with less packages selected.")
+		} else if (request.status === 413) {
+		error_box("No firmware created due to image size. Try again with less packages selected.")
 
-        } else if (request.status === 422) {
-            var package_missing = request.getResponseHeader("X-Unknown-Package");
-            set_status("danger", "Unknown package in request: <b>" + package_missing + "</b>")
-        } else if (request.status === 500) {
-            request_json = JSON.parse(request_text)
+		} else if (request.status === 422) {
+			var package_missing = request.getResponseHeader("X-Unknown-Package");
+			error_box("Unknown package in request: <b>" + package_missing + "</b>")
+		} else if (request.status === 500) {
+			request_json = JSON.parse(request_text)
 
-            var error_box_content = "<b>Internal server error</b><br />"
-            error_box_content += request_json.error
-            if (request_json.log != undefined) {
-                data.log_url = request_json.log
-            }
-            set_status("danger", error_box_content)
+			error_box_content = "<b>Internal server error</b><br />"
+			error_box_content += request_json.error
+			if(request_json.log != undefined) {
+				data.log_url = request_json.log
+			}
+			error_box(error_box_content)
 
-        } else if (request.status === 501) {
-            set_status("danger", "No sysupgrade file produced, may not supported by model.")
-        } else if (request.status === 502) {
-            // python part offline
-            set_status("danger", "Server down for maintenance")
-            setTimeout(function() {
-                server_request(path, callback)
-            }, 30000)
-        } else if (request.status === 503) {
-            set_status("danger", "Server overloaded")
-            setTimeout(function() {
-                server_request(path, callback)
-            }, 30000)
-        }
-    });
+		} else if (request.status === 501) {
+			error_box("No sysupgrade file produced, may not supported by model.")
+
+		} else if (request.status === 502) {
+			// python part offline
+			error_box("Server down for maintenance")
+			setTimeout(function() { server_request(request_dict, path, callback) }, 30000)
+		} else if (request.status === 503) {
+			error_box("Server overloaded")
+			setTimeout(function() { server_request(request_dict, path, callback) }, 30000)
+		}
+	});
 }
 request_dict = {}
 document.onload = setup()
