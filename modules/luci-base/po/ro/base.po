@@ -581,6 +581,12 @@ msgstr "Anuleaza"
 msgid "Category"
 msgstr ""
 
+msgid "Caution: Configuration files will be erased"
+msgstr ""
+
+msgid "Caution: System upgrade will be forced"
+msgstr ""
+
 msgid "Chain"
 msgstr "Lant"
 
@@ -678,8 +684,8 @@ msgstr "Configurare"
 msgid "Configuration failed"
 msgstr ""
 
-msgid "Configuration files will be kept."
-msgstr "Fisierele de configurare vor fi pastrate."
+msgid "Configuration files will be kept"
+msgstr ""
 
 msgid "Configuration has been applied."
 msgstr ""
@@ -1276,6 +1282,9 @@ msgid "Force TKIP and CCMP (AES)"
 msgstr "Forteaza TKIP si CCMP (AES)"
 
 msgid "Force link"
+msgstr ""
+
+msgid "Force upgrade"
 msgstr ""
 
 msgid "Force use of NAT-T"
@@ -2196,9 +2205,6 @@ msgstr "Nu este asociat."
 msgid "Not connected"
 msgstr "Nu este conectat"
 
-msgid "Note: Configuration files will be erased."
-msgstr "Nota: fisierele de configurare vor fi sterse."
-
 msgid "Note: interface name length"
 msgstr ""
 
@@ -2883,6 +2889,12 @@ msgid "Section removed"
 msgstr "Sectiune eliminata"
 
 msgid "See \"mount\" manpage for details"
+msgstr ""
+
+msgid ""
+"Select 'Force upgrade' to flash the image even if the image format check "
+"fails. Use only if you are sure that the firmware is correct and meant for "
+"your device!"
 msgstr ""
 
 msgid ""
@@ -3884,6 +3896,12 @@ msgstr "da"
 
 msgid "« Back"
 msgstr "« Inapoi"
+
+#~ msgid "Configuration files will be kept."
+#~ msgstr "Fisierele de configurare vor fi pastrate."
+
+#~ msgid "Note: Configuration files will be erased."
+#~ msgstr "Nota: fisierele de configurare vor fi sterse."
 
 #~ msgid "<abbr title='Pairwise: %s / Group: %s'>%s - %s</abbr>"
 #~ msgstr "<abbr title='Pairwise: %s / Group: %s'>%s - %s</abbr>"

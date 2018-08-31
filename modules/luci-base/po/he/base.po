@@ -589,6 +589,12 @@ msgstr "בטל"
 msgid "Category"
 msgstr ""
 
+msgid "Caution: Configuration files will be erased"
+msgstr ""
+
+msgid "Caution: System upgrade will be forced"
+msgstr ""
+
 msgid "Chain"
 msgstr "שרשרת"
 
@@ -683,8 +689,8 @@ msgstr "הגדרות"
 msgid "Configuration failed"
 msgstr ""
 
-msgid "Configuration files will be kept."
-msgstr "קבצי ההגדרות ישמרו."
+msgid "Configuration files will be kept"
+msgstr ""
 
 msgid "Configuration has been applied."
 msgstr ""
@@ -1284,6 +1290,9 @@ msgid "Force TKIP and CCMP (AES)"
 msgstr ""
 
 msgid "Force link"
+msgstr ""
+
+msgid "Force upgrade"
 msgstr ""
 
 msgid "Force use of NAT-T"
@@ -2199,9 +2208,6 @@ msgstr ""
 msgid "Not connected"
 msgstr "לא מחובר"
 
-msgid "Note: Configuration files will be erased."
-msgstr ""
-
 msgid "Note: interface name length"
 msgstr ""
 
@@ -2884,6 +2890,12 @@ msgid "Section removed"
 msgstr ""
 
 msgid "See \"mount\" manpage for details"
+msgstr ""
+
+msgid ""
+"Select 'Force upgrade' to flash the image even if the image format check "
+"fails. Use only if you are sure that the firmware is correct and meant for "
+"your device!"
 msgstr ""
 
 msgid ""
@@ -3888,6 +3900,9 @@ msgstr "כן"
 
 msgid "« Back"
 msgstr "<< אחורה"
+
+#~ msgid "Configuration files will be kept."
+#~ msgstr "קבצי ההגדרות ישמרו."
 
 #~ msgid "Activate this network"
 #~ msgstr "הפעל רשת זו"

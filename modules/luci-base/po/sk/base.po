@@ -567,6 +567,12 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
+msgid "Caution: Configuration files will be erased"
+msgstr ""
+
+msgid "Caution: System upgrade will be forced"
+msgstr ""
+
 msgid "Chain"
 msgstr ""
 
@@ -661,7 +667,7 @@ msgstr ""
 msgid "Configuration failed"
 msgstr ""
 
-msgid "Configuration files will be kept."
+msgid "Configuration files will be kept"
 msgstr ""
 
 msgid "Configuration has been applied."
@@ -1256,6 +1262,9 @@ msgid "Force TKIP and CCMP (AES)"
 msgstr ""
 
 msgid "Force link"
+msgstr ""
+
+msgid "Force upgrade"
 msgstr ""
 
 msgid "Force use of NAT-T"
@@ -2171,9 +2180,6 @@ msgstr ""
 msgid "Not connected"
 msgstr ""
 
-msgid "Note: Configuration files will be erased."
-msgstr ""
-
 msgid "Note: interface name length"
 msgstr ""
 
@@ -2856,6 +2862,12 @@ msgid "Section removed"
 msgstr ""
 
 msgid "See \"mount\" manpage for details"
+msgstr ""
+
+msgid ""
+"Select 'Force upgrade' to flash the image even if the image format check "
+"fails. Use only if you are sure that the firmware is correct and meant for "
+"your device!"
 msgstr ""
 
 msgid ""

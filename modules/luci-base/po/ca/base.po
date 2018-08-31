@@ -596,6 +596,12 @@ msgstr "Cancel·la"
 msgid "Category"
 msgstr ""
 
+msgid "Caution: Configuration files will be erased"
+msgstr ""
+
+msgid "Caution: System upgrade will be forced"
+msgstr ""
+
 msgid "Chain"
 msgstr "Cadena"
 
@@ -698,8 +704,8 @@ msgstr "Configuració"
 msgid "Configuration failed"
 msgstr ""
 
-msgid "Configuration files will be kept."
-msgstr "Es mantindran els fitxers de configuració."
+msgid "Configuration files will be kept"
+msgstr ""
 
 msgid "Configuration has been applied."
 msgstr ""
@@ -1306,6 +1312,9 @@ msgid "Force TKIP and CCMP (AES)"
 msgstr "Força el TKIP i el CCMP (AES)"
 
 msgid "Force link"
+msgstr ""
+
+msgid "Force upgrade"
 msgstr ""
 
 msgid "Force use of NAT-T"
@@ -2241,9 +2250,6 @@ msgstr "No associat"
 msgid "Not connected"
 msgstr "No connectat"
 
-msgid "Note: Configuration files will be erased."
-msgstr "Nota: Els fitxers de configuració s'esborraran."
-
 msgid "Note: interface name length"
 msgstr ""
 
@@ -2936,6 +2942,12 @@ msgid "Section removed"
 msgstr "Secció treta"
 
 msgid "See \"mount\" manpage for details"
+msgstr ""
+
+msgid ""
+"Select 'Force upgrade' to flash the image even if the image format check "
+"fails. Use only if you are sure that the firmware is correct and meant for "
+"your device!"
 msgstr ""
 
 msgid ""
@@ -3990,6 +4002,12 @@ msgstr "sí"
 
 msgid "« Back"
 msgstr "« Enrere"
+
+#~ msgid "Configuration files will be kept."
+#~ msgstr "Es mantindran els fitxers de configuració."
+
+#~ msgid "Note: Configuration files will be erased."
+#~ msgstr "Nota: Els fitxers de configuració s'esborraran."
 
 #~ msgid "<abbr title='Pairwise: %s / Group: %s'>%s - %s</abbr>"
 #~ msgstr "<abbr title='Parella: %s / Grup: %s'>%s - %s</abbr>"

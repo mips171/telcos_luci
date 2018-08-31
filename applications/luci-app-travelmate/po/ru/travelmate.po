@@ -16,7 +16,7 @@ msgstr ""
 "интерфейс, все проверялось в графическом режиме, совместим с другими apps\n"
 
 msgid "Action"
-msgstr "Действия"
+msgstr ""
 
 msgid "Add Uplink"
 msgstr "Подключение к сети"
@@ -172,7 +172,10 @@ msgid "Interface Wizard"
 msgstr "Помощник настройки интерфейса"
 
 msgid "Last Run"
-msgstr "Дата последнего запуска"
+msgstr ""
+
+msgid "Loading"
+msgstr ""
 
 msgid "Loading"
 msgstr ""
@@ -232,10 +235,6 @@ msgid ""
 "(%s). You can edit, delete or re-order existing uplinks or scan for a new "
 "one. The currently used uplink is emphasized in blue, faulty stations in red."
 msgstr ""
-"Общие сведения обо всех настроенных внешних сетевых соединениях интерфейса "
-"TravelMate (%s).<br />Вы можете редактировать, удалять или пере "
-"упорядочивать существующий список внешних сетей или выполнять их поиск.<br /"
-">Используемое сетевое соединение выделено синим цветом."
 
 msgid "QR-Codes"
 msgstr ""
@@ -280,7 +279,7 @@ msgid "Signal strength"
 msgstr "Мощность сигнала"
 
 msgid "Station ID (RADIO/SSID/BSSID)"
-msgstr "ID (RADIO/SSID/BSSID) клиента"
+msgstr ""
 
 msgid "Station Interface"
 msgstr "Интерфейс клиента"
@@ -291,8 +290,6 @@ msgstr ""
 
 msgid "The syslog output, pre-filtered for travelmate related messages only."
 msgstr ""
-"Страница просмотра системного журнала, показаны только события связанные с "
-"работой утилиты TravelMate."
 
 msgid ""
 "This form allows you to modify the content of the main firewall "
@@ -388,11 +385,37 @@ msgstr ""
 msgid "hidden"
 msgstr "скрытый"
 
+#~ msgid "Last rundate"
+#~ msgstr "Дата последнего запуска"
+
+#~ msgid ""
+#~ "Provides an overview of all configured uplinks for the travelmate "
+#~ "interface (%s). You can edit, delete or re-order existing uplinks or scan "
+#~ "for a new one. The currently used uplink is emphasized in blue."
+#~ msgstr ""
+#~ "Общие сведения обо всех настроенных внешних сетевых соединениях "
+#~ "интерфейса TravelMate (%s).<br />Вы можете редактировать, удалять или "
+#~ "пере упорядочивать существующий список внешних сетей или выполнять их "
+#~ "поиск.<br />Используемое сетевое соединение выделено синим цветом."
+
+#~ msgid "Station ID (SSID/BSSID)"
+#~ msgstr "ID (SSID/BSSID) клиента"
+
 #~ msgid "Station Radio"
 #~ msgstr "Wi-Fi устройство клиента"
 
+#~ msgid ""
+#~ "This form shows the syslog output, pre-filtered for travelmate related "
+#~ "messages only."
+#~ msgstr ""
+#~ "Страница просмотра системного журнала, показаны только события связанные "
+#~ "с работой утилиты TravelMate."
+
 #~ msgid "Travelmate Logfile"
 #~ msgstr "Системный журнал TravelMate"
+
+#~ msgid "n/a"
+#~ msgstr "нет данных"
 
 #~ msgid "n/a"
 #~ msgstr "нет данных"

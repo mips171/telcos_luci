@@ -176,9 +176,6 @@ msgstr ""
 msgid "Max. Download Queue"
 msgstr ""
 
-msgid "Name"
-msgstr ""
-
 msgid "No"
 msgstr "Nej"
 
@@ -282,14 +279,10 @@ msgstr ""
 msgid ""
 "This form allows you to modify the content of the adblock blacklist (%s)."
 msgstr ""
-"Det här formuläret tillåter dig att förändra innehållet i adblock's "
-"svartlista (%s)."
 
 msgid ""
 "This form allows you to modify the content of the adblock whitelist (%s)."
 msgstr ""
-"Det här formuläret tillåter dig att förändra innehållet i adblock's vitlista "
-"(%s)."
 
 msgid ""
 "This form allows you to modify the content of the main adblock configuration "
@@ -342,6 +335,20 @@ msgstr ""
 #~ msgid "Adblock Logfile"
 #~ msgstr "Adblock's loggfil"
 
+#~ msgid ""
+#~ "This form allows you to modify the content of the adblock blacklist (%s)."
+#~ "<br />"
+#~ msgstr ""
+#~ "Det här formuläret tillåter dig att förändra innehållet i adblock's "
+#~ "svartlista (%s).<br />"
+
+#~ msgid ""
+#~ "This form allows you to modify the content of the adblock whitelist (%s)."
+#~ "<br />"
+#~ msgstr ""
+#~ "Det här formuläret tillåter dig att förändra innehållet i adblock's "
+#~ "vitlista (%s).<br />"
+
 #~ msgid "disabled"
 #~ msgstr "inaktiverad"
 
@@ -350,6 +357,12 @@ msgstr ""
 
 #~ msgid "error"
 #~ msgstr "fel"
+
+#~ msgid "n/a"
+#~ msgstr "n/a"
+
+#~ msgid "paused"
+#~ msgstr "pausad"
 
 #~ msgid "n/a"
 #~ msgstr "n/a"

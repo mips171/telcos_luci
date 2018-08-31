@@ -185,9 +185,6 @@ msgstr ""
 msgid "Max. Download Queue"
 msgstr ""
 
-msgid "Name"
-msgstr ""
-
 msgid "No"
 msgstr "Não"
 
@@ -286,8 +283,6 @@ msgstr ""
 
 msgid "The syslog output, pre-filtered for adblock related messages only."
 msgstr ""
-"Esse formulário mostra a saída do syslog, pré-filtrado para mensagens do "
-"adblock  apenas."
 
 msgid "This change requires a manual service stop/re-start to take effect."
 msgstr ""
@@ -295,14 +290,10 @@ msgstr ""
 msgid ""
 "This form allows you to modify the content of the adblock blacklist (%s)."
 msgstr ""
-"Esse formulário permite que você modifique o conteúdo das listas de bloqueio "
-"do adblock (%s)."
 
 msgid ""
 "This form allows you to modify the content of the adblock whitelist (%s)."
 msgstr ""
-"Esse formulário permite que você modifique o conteúdo das listas de "
-"permissão do adblock (%s)."
 
 msgid ""
 "This form allows you to modify the content of the main adblock configuration "
@@ -354,8 +345,32 @@ msgstr ""
 #~ msgid "Adblock Logfile"
 #~ msgstr "Arquivo de log do Adblock"
 
+#~ msgid ""
+#~ "This form allows you to modify the content of the adblock blacklist (%s)."
+#~ "<br />"
+#~ msgstr ""
+#~ "Esse formulário permite que você modifique o conteúdo das listas de "
+#~ "bloqueio do adblock (%s).<br />"
+
+#~ msgid ""
+#~ "This form allows you to modify the content of the adblock whitelist (%s)."
+#~ "<br />"
+#~ msgstr ""
+#~ "Esse formulário permite que você modifique o conteúdo das listas de "
+#~ "permissão do adblock (%s).<br />"
+
+#~ msgid ""
+#~ "This form shows the syslog output, pre-filtered for adblock related "
+#~ "messages only."
+#~ msgstr ""
+#~ "Esse formulário mostra a saída do syslog, pré-filtrado para mensagens do "
+#~ "adblock  apenas."
+
 #~ msgid "n/a"
 #~ msgstr "n/d"
+
+#~ msgid "Invalid domain specified!"
+#~ msgstr "Domínio especificado inválido!"
 
 #~ msgid "Available blocklist sources."
 #~ msgstr "Fontes de listas de bloqueio disponíveis."
