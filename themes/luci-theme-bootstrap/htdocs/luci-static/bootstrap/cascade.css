@@ -2041,3 +2041,7 @@ html body.apply-overlay-active {
 #applyreboot-section {
 	line-height: 300%;
 }
+
+[data-page="admin-network-dhcp"] [data-name="ip"] {
+	width: 15%;
+}
