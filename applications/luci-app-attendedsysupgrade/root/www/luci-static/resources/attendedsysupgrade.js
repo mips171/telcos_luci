@@ -31,24 +31,25 @@ function set_server() {
 }
 
 function edit_server() {
-    $("#server").type = 'text';
-    $("#server").onkeydown = function(event) {
-        if (event.key === 'Enter') {
-            set_server();
-            return false;
-        }
-    }
-    $("#server").className = '';
-    $("#server").onclick = null;
+	$("#server").type = 'text';
+	$("#server").onkeydown = function(event) {
+		if(event.key === 'Enter') {
+			set_server();
+			return false;
+		}
+	}
+	$("#server").className = '';
+	$("#server").onclick = null;
 
-    var button_set = document.createElement("input");
-    button_set.type = "button";
-    button_set.value = "Save";
-    button_set.name = "button_set";
-    button_set.id = "button_set";
-    button_set.className = 'cbi-button cbi-button-save';
-    button_set.onclick = set_server
-    $("#server").parentElement.appendChild(button_set);
+	var button_set = document.createElement("input");
+	button_set.type = "button";
+	button_set.value = "Save";
+	button_set.name = "button_set";
+	button_set.id = "button_set";
+	button_set.className = 'cbi-button cbi-button-edit';
+	button_set.style = 'background-image: url("/luci-static/resources/cbi/save.gif");'
+	button_set.onclick = set_server
+	$("#server").parentElement.appendChild(button_set);
 }
 
 function edit_packages() {
@@ -131,7 +132,7 @@ function ubus_call(command, argument, params, variable) {
 	request_data.id = ubus_counter;
 	request_data.method = "call";
 	request_data.params = [ data.ubus_rpc_session, command, argument, params ]
-	request_json = JSON.stringify(request_data)
+	var request_json = JSON.stringify(request_data)
 	ubus_counter++;
 	var request = new XMLHttpRequest();
 	request.open("POST", ubus_url, true);
@@ -224,7 +225,7 @@ function upgrade_check_callback(request_text) {
 	}
 	if(request_json.upgrades != undefined) {
 		info_output += "<h3>Package upgrades available</h3>"
-		for (upgrade in request_json.upgrades) {
+		for (var upgrade in request_json.upgrades) {
 			info_output += "<b>" + upgrade + "</b>: " + request_json.upgrades[upgrade][1] + " to " + request_json.upgrades[upgrade][0] + "<br />"
 		}
 	}
@@ -269,21 +270,25 @@ function upgrade_request() {
 }
 
 function upgrade_request_callback(request) {
-    // ready to download
-    var request_json = JSON.parse(request);
-    data.files = request_json.files;
-    data.sysupgrade = request_json.sysupgrade;
+	// ready to download
+	var request_json = JSON.parse(request);
+	data.sysupgrade_url = request_json.sysupgrade;
 
-    var info_output = 'Firmware created: <a href="' + data.url + data.files + data.sysupgrade + '"><b>' + data.sysupgrade + '</b></a>'
-    info_output += ' <a target="_blank" href="' + data.url + request_json.log + '">Build log</a>'
-    set_status("info", info_output);
+	var filename_split = data.sysupgrade_url.split("/")
+	data.filename = filename_split[filename_split.length - 1]
 
-    show("#keep_container");
-    var upgrade_button = $("#upgrade_button")
-    upgrade_button.disabled = false;
-    upgrade_button.style.display = "block";
-    upgrade_button.value = "Flash firmware";
-    upgrade_button.onclick = download_image;
+	var info_output = 'Firmware created: <a href="' + data.sysupgrade_url + '"><b>' + data.filename + '</b></a>'
+	if(data.advanced_mode == 1) {
+		info_output += '<br /><a target="_blank" href="' + data.sysupgrade_url + '.log">Build log</a>'
+	}
+	info_box(info_output);
+
+	show("#keep_container");
+	var upgrade_button = $("#upgrade_button")
+	upgrade_button.disabled = false;
+	upgrade_button.style.display = "block";
+	upgrade_button.value = "Flash firmware";
+	upgrade_button.onclick = download_image;
 }
 
 function flash_image() {
@@ -368,6 +373,7 @@ function download_image() {
 }
 
 function server_request(request_dict, path, callback) {
+	var request_json;
 	request_dict.distro = data.release.distribution;
 	request_dict.target = data.release.target.split("\/")[0];
 	request_dict.subtarget = data.release.target.split("\/")[1];
@@ -380,7 +386,7 @@ function server_request(request_dict, path, callback) {
 		show("#server_div");
 	}
 	request.addEventListener('load', function(event) {
-		request_text = request.responseText;
+		var request_text = request.responseText;
 		if (request.status === 200) {
 			callback(request_text)
 
@@ -426,7 +432,7 @@ function server_request(request_dict, path, callback) {
 		} else if (request.status === 500) {
 			request_json = JSON.parse(request_text)
 
-			error_box_content = "<b>Internal server error</b><br />"
+			var error_box_content = "<b>Internal server error</b><br />"
 			error_box_content += request_json.error
 			if(request_json.log != undefined) {
 				data.log_url = request_json.log
