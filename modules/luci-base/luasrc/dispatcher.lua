@@ -420,6 +420,7 @@ function dispatch(request)
 				context.path = {}
 
 				http.status(403, "Forbidden")
+				http.header("X-LuCI-Login-Required", "yes")
 				tmpl.render(track.sysauth_template or "sysauth", {
 					duser = default_user,
 					fuser = user
@@ -436,6 +437,7 @@ function dispatch(request)
 
 		if not sid or not sdat then
 			http.status(403, "Forbidden")
+			http.header("X-LuCI-Login-Required", "yes")
 			return
 		end
 
