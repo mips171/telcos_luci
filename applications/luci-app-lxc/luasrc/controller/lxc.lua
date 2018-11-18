@@ -152,7 +152,6 @@ function lxc_get_arch_target(url)
 			armv6  = "armel",
 			armv7  = "armhf",
 			armv8  = "arm64",
-			aarch64  = "arm64",
 			i686   = "i386",
 			x86_64 = "amd64"
 		}
