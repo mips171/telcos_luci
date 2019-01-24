@@ -1,7 +1,6 @@
 # Advanced Reboot Web UI (luci-app-advanced-reboot)
 
 ## Description
-
 This package allows you to reboot to an alternative partition on the supported (dual-partition) routers and to power off (power down) your OpenWrt device.
 
 ## Supported Devices
