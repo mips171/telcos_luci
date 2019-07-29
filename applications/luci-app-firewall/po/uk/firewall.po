@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2019-07-14 14:30+0300\n"
+"PO-Revision-Date: 2019-07-30 02:30+0300\n"
 "Last-Translator: Yurii <yuripet@gmail.com>\n"
 "Language-Team: none\n"
 "Language: uk\n"
@@ -74,12 +74,18 @@ msgid ""
 "traffic, e.g. <code>-p tcp --dport 443</code> to only match outbound HTTPS "
 "traffic."
 msgstr ""
+"Додаткові аргументи raw <em>iptables</em> для класифікації трафіку "
+"призначення зони, наприклад, <code>-p tcp --dport 443</code>, щоб "
+"зіставляти лише вихідний трафік HTTPS."
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:235
 msgid ""
 "Additional raw <em>iptables</em> arguments to classify zone source traffic, "
 "e.g. <code>-p tcp --sport 443</code> to only match inbound HTTPS traffic."
 msgstr ""
+"Додаткові аргументи raw <em>iptables</em> для класифікації трафіку "
+"джерела зони, наприклад, <code>-p tcp --sport 443</code>, щоб "
+"зіставляти лише вхідний трафік HTTPS."
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/forwards.js:100
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/rules.js:136
@@ -89,7 +95,7 @@ msgstr "Розширені настройки"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:207
 msgid "Allow \"invalid\" traffic"
-msgstr ""
+msgstr "Дозволити \"неправильний\" трафік"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:304
 msgid "Allow forward from <em>source zones</em>:"
@@ -110,32 +116,39 @@ msgstr "Будь-який день"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:210
 msgid "Automatic helper assignment"
-msgstr ""
+msgstr "Автоматичне призначення помічника"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:210
 msgid ""
 "Automatically assign conntrack helpers based on traffic protocol and port"
 msgstr ""
+"Автоматично призначати помічників відслідковування з'єднань (<abbr "
+"title=\"Connection tracking\">Conntrack</abbr>) на підставі протоколу та "
+"порту трафіку"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:85
 msgid "Conntrack Settings"
 msgstr ""
+"Параметри відслідковування з'єднань (<abbr title=\"Connection tracking\">""
+"Conntrack</abbr>)"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:214
 msgid "Conntrack helpers"
 msgstr ""
+"Помічники відслідковування з'єднань (<abbr title=\"Connection tracking\">"
+"Conntrack</abbr>)"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:175
 msgid "Covered devices"
-msgstr ""
+msgstr "Охоплені пристрої"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:135
 msgid "Covered networks"
-msgstr "Покриті мережі"
+msgstr "Охоплені мережі"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:179
 msgid "Covered subnets"
-msgstr ""
+msgstr "Охоплені підмережі"
 
 #: applications/luci-app-firewall/luasrc/controller/firewall.lua:19
 msgid "Custom Rules"
@@ -148,7 +161,7 @@ msgid ""
 "each firewall restart, right after the default ruleset has been loaded."
 msgstr ""
 "Настроювані правила дозволяють виконувати довільні команди <em>iptables</"
-"em>, які в іншому випадку не охоплені в межах брандмауера. Команди "
+"em>, які в іншому випадку не охоплено в межах брандмауера. Команди "
 "виконуються після кожного перезавантаження брандмауера, відразу після "
 "завантаження типового набору правил."
 
@@ -190,6 +203,9 @@ msgid ""
 "Do not install extra rules to reject forwarded traffic with conntrack state "
 "<em>invalid</em>. This may be required for complex asymmetric route setups."
 msgstr ""
+"Не встановлювати додаткові правила для відхилення переспрямованого трафіку зі "
+"станом відслідковування з'єднань <em>invalid</em>. Це може знадобитися для "
+"складних налаштувань асиметричного маршруту."
 
 #: applications/luci-app-firewall/luasrc/view/firewall/cbi_addsnat.htm:45
 #: applications/luci-app-firewall/luasrc/view/firewall/cbi_addsnat.htm:50
@@ -239,7 +255,7 @@ msgstr ""
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:214
 msgid "Explicitly choses allowed connection tracking helpers for zone traffic"
-msgstr ""
+msgstr "В явному вигляді дозволені помічники відслідковування з'єднань для трафіку зони"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/forwards.js:209
 msgid "External IP address"
@@ -262,15 +278,15 @@ msgstr "Додаткові аргументи"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:245
 msgid "Extra destination arguments"
-msgstr ""
+msgstr "Додаткові аргументи для призначення"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:86
 msgid "Extra iptables arguments"
-msgstr ""
+msgstr "Додаткові аргументи iptables"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:235
 msgid "Extra source arguments"
-msgstr ""
+msgstr "Додаткові аргументи для джерела"
 
 #: applications/luci-app-firewall/luasrc/controller/firewall.lua:6
 msgid "Firewall"
@@ -294,7 +310,7 @@ msgstr "Брандмауер — Параметри зон"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:204
 msgid "Force connection tracking"
-msgstr "Увімкнути відстеження з'єднань"
+msgstr "Примусове відслідковування з'єднань"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:47
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:119
@@ -380,7 +396,7 @@ msgstr "Лише IPv4"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/tools/firewall.js:218
 msgid "IPv6"
-msgstr ""
+msgstr "IPv6"
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/rules.js:202
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:187
@@ -539,6 +555,11 @@ msgid ""
 "invalid values could render the firewall ruleset broken, completely exposing "
 "all services."
 msgstr ""
+"Передавання аргументів raw iptables до правил класифікації вихідного трафіку "
+"та трафіку призначення дозволяє зіставляти пакети на підставі інших критеріїв, "
+"ніж інтерфейси чи підмережі. Ці параметри слід використовувати з особливою "
+"обережністю, оскільки невірні значення можуть призвести до порушення набору "
+"правил брандмауера, повністю відкриваючи всі служби."
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/forwards.js:94
 #: applications/luci-app-firewall/luasrc/controller/firewall.lua:12
@@ -558,6 +579,8 @@ msgid ""
 "Prevent the installation of <em>NOTRACK</em> rules which would bypass "
 "connection tracking."
 msgstr ""
+"Запобігати встановленню правил NOTRACK, які могли б обійти відслідковування "
+"з'єднань."
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/forwards.js:153
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/rules.js:204
@@ -795,12 +818,16 @@ msgid ""
 "Use this option to classify zone traffic by raw, non-<em>uci</em> managed "
 "network devices."
 msgstr ""
+"Використовуйте цей параметр для класифікації трафіку зон за мережевими "
+"пристроями <em>raw</em>, які не управляються через <em>uci</em>."
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/zones.js:179
 msgid ""
 "Use this option to classify zone traffic by source or destination subnet "
 "instead of networks or devices."
 msgstr ""
+"Використовуйте цей параметр для класифікації трафіку зон за підмережею "
+"джерела чи призначення замість мереж або пристроїв."
 
 #: applications/luci-app-firewall/htdocs/luci-static/resources/view/firewall/forwards.js:72
 msgid "Via %s"
@@ -928,6 +955,3 @@ msgstr "типом"
 #: applications/luci-app-firewall/luasrc/tools/firewall.lua:130
 msgid "types"
 msgstr "типами"
-
-#~ msgid "Output zone"
-#~ msgstr "Вихідна зона"
