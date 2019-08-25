@@ -7,11 +7,11 @@ module("luci.controller.admin.system", package.seeall)
 function index()
 	local fs = require "nixio.fs"
 
-	entry({"admin", "system", "system"}, view("system/system"), _("System"), 1)
+	entry({"admin", "system", "system"}, view("system/system"), _("System Settings"), 1)
 	entry({"admin", "system", "clock_status"}, post_on({ set = true }, "action_clock_status"))
 	entry({"admin", "system", "ntp_restart"}, call("action_ntp_restart"), nil).leaf = true
 
-	entry({"admin", "system", "admin"}, firstchild(), _("Administration"), 2)
+	entry({"admin", "system", "admin"}, firstchild(), _("Password"), 2)
 	entry({"admin", "system", "admin", "password"}, template("admin_system/password"), _("Password"), 1)
 	entry({"admin", "system", "admin", "password", "json"}, post("action_password"))
 
