@@ -45,7 +45,7 @@ function index()
 
 	page = node("admin", "system")
 	page.title = _("System")
-	page.order = 20
+	page.order = 50
 	page.index = true
 	-- system/system is from mod-admin-full
 	toplevel_page(page, "admin/system/system", alias("admin", "system", "system"))
@@ -67,7 +67,7 @@ function index()
 	-- Even for mod-admin-full network just uses first submenu item as landing
 	page = node("admin", "network")
 	page.title = _("Network")
-	page.order = 50
+	page.order = 20
 	page.index = true
 	toplevel_page(page, false, false)
 
