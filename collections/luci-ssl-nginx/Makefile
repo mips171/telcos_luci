@@ -14,7 +14,7 @@ LUCI_DESCRIPTION:=LuCI with OpenSSL as the SSL backend (libustream-openssl). \
  OpenSSL cmd tools (openssl-util) are used by nginx for SSL key generation. \
  
 LUCI_DEPENDS:= \
-	+nginx-ssl +nginx-mod-luci-ssl +luci-mod-admin-full +luci-theme-bootstrap \
+	+nginx-ssl +nginx-mod-luci-ssl +luci-mod-admin-full \
 	+luci-app-firewall +luci-proto-ppp +libiwinfo-lua +IPV6:luci-proto-ipv6 \
 	+rpcd-mod-rrdns +openssl-util
 
