@@ -2,8 +2,8 @@
 -- Licensed to the public under the Apache License 2.0.
 
 m = Map("system", 
-	translate("Watchcat"), 
-	translate("Watchcat allows configuring a periodic reboot when the " ..
+	translate("Ping Reboot"), 
+	translate("Configure a periodic reboot when the " ..
 		  "Internet connection has been lost for a certain period of time."
 		 ))
 
@@ -19,7 +19,7 @@ mode:value("allways", "Periodic reboot")
 
 forcedelay = s:option(Value, "forcedelay",
 		      translate("Forced reboot delay"),
-		      translate("When rebooting the system, the watchcat will trigger a soft reboot. " ..
+		      translate("Trigger a soft, graceful reboot. " ..
 				"Entering a non zero value here will trigger a delayed hard reboot " ..
 				"if the soft reboot fails. Enter a number of seconds to enable, " ..
 				"use 0 to disable"))
@@ -39,7 +39,7 @@ pinghost = s:option(Value, "pinghosts",
 		    translate("Ping host"),
 		    translate("Host address to ping"))
 pinghost.datatype = "host(1)"
-pinghost.default = "8.8.8.8"
+pinghost.default = "www.telcoantennas.com.au"
 pinghost:depends({mode="ping"})
 
 pingperiod = s:option(Value, "pingperiod", 
