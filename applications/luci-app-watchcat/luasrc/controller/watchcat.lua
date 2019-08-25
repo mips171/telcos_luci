@@ -7,5 +7,5 @@ function index()
    if not nixio.fs.access("/etc/config/system") then
       return
    end
-   entry({"admin", "services", "watchcat"}, cbi("watchcat/watchcat"), _("Watchcat"), 90)
+   entry({"admin", "services", "watchcat"}, cbi("watchcat/watchcat"), _("Ping Reboot"), 90)
 end

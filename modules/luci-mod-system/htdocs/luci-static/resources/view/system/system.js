@@ -111,7 +111,7 @@ return L.view.extend({
 		s.tab('general', _('General Settings'));
 		s.tab('logging', _('Logging'));
 		s.tab('timesync', _('Time Synchronization'));
-		s.tab('language', _('Language and Style'));
+		s.tab('language', _('Language and Theme'));
 
 		/*
 		 * System Properties
@@ -220,7 +220,7 @@ return L.view.extend({
 			if (k[i].charAt(0) != '.')
 				o.value(k[i], uci.get('luci', 'languages', k[i]));
 
-		o = s.taboption('language', form.ListValue, '_mediaurlbase', _('Design'))
+		o = s.taboption('language', form.ListValue, '_mediaurlbase', _('Theme'))
 		o.uciconfig = 'luci';
 		o.ucisection = 'main';
 		o.ucioption = 'mediaurlbase';
@@ -236,8 +236,8 @@ return L.view.extend({
 
 		if (ntpd_support != null) {
 			var default_servers = [
-				'0.openwrt.pool.ntp.org', '1.openwrt.pool.ntp.org',
-				'2.openwrt.pool.ntp.org', '3.openwrt.pool.ntp.org'
+				'0.au.pool.ntp.org', '1.au.pool.ntp.org',
+				'2.au.pool.ntp.org', '3.au.pool.ntp.org'
 			];
 
 			o = s.taboption('timesync', form.Flag, 'enabled', _('Enable NTP client'));
