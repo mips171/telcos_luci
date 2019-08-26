@@ -9,6 +9,7 @@
 		<title><%=luci.sys.hostname()%> - <%= title or translate("Rebooting...") %></title>
 		<link rel="stylesheet" type="text/css" media="screen" href="<%=media%>/cascade.css" />
 		<script type="text/javascript" src="<%=resource%>/xhr.js"></script>
+		<script type="text/javascript" src="<%=resource%>/bars.js"</script>
 		<script type="text/javascript">//<![CDATA[
 			var interval = window.setInterval(function() {
 				var img = new Image();
@@ -36,14 +37,17 @@
 		<div class="main">
 			<div id="maincontainer">
 				<div id="maincontent" class="container">
-					<h2 name="content" id="applyreboot-container" ><%:System%> - <%= title or translate("Rebooting...") %></h2>
+					<h2 name="content" id="applyreboot-container" ><%:System%> - <%= title or translate("Installing firmware...") %></h2>
 					<div class="cbi-section" id="applyreboot-section">
 						<div>
-							<%= msg or translate("Changes applied.") %>
-						</div>
+							<h1>Progress</h1>
+                            	<div id='progressbar_install'></div>
+								<script>
+								addEventListener('load', function() {  createProgressbar('progressbar_install', '380s', function() {    window.location.href = (window.location.protocol + "//" + window.location.host)  });});
+								</script>
+							</div>
 						<div>
-							<img src="<%=resource%>/icons/loading.gif" alt="<%:Loading%>" style="vertical-align:middle" />
-							<%:Waiting for changes to be applied...%>
+							<%= msg or translate("Changes applied.") %>
 						</div>
 					</div>
 				</div>
@@ -51,3 +55,4 @@
 		</div>
 	</body>
 </html>
+
