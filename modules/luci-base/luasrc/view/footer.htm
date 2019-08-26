@@ -9,6 +9,7 @@
 
 	if is_rollback_pending or trigger_apply or trigger_revert then
 %>
+	<script src="<%=resource%>/bars.js"></script>               
 	<script type="text/javascript">
 		document.addEventListener("luci-loaded", function() {
 			<% if trigger_apply then -%>
