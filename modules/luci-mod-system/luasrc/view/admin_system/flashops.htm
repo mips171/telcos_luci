@@ -15,7 +15,7 @@
 
 <div class="cbi-section">
 	<h3><%:Backup%></h3>
-	<div class="cbi-section-descr"><%:You can download an archive file of the current configuration.%></div>
+	<div class="cbi-section-descr"><%:You can download a backup file of the current configuration.%></div>
 	<div class="cbi-section-node">
 		<form class="inline" method="post" action="<%=url('admin/system/flashops/backup')%>">
 			<input type="hidden" name="token" value="<%=token%>" />
@@ -48,13 +48,13 @@
 	</form>
 	
 	<% if backup_invalid then %>
-	<div class="cbi-section-error"><%:The configuration file does not appear to be a valid gzip (%><em>.gz</em><%:) file.  Please use a file downloaded from a compatible Telco Electronics device.%></div>
+	<div class="cbi-section-error"><%:The configuration file does not appear to be a valid backup (%><em>.gz</em><%:) file.  Please use a file downloaded from a compatible Telco Electronics device.%></div>
 	<% end %>
 	</div>
 </div>
 
 <div class="cbi-section">
-	<h3><%:Flash new firmware image%></h3>
+	<h3><%:Install new firmware%></h3>
 	<% if upgrade_avail then %>
 		<form method="post" action="<%=url('admin/system/flashops/sysupgrade')%>" enctype="multipart/form-data">
 			<input type="hidden" name="token" value="<%=token%>" />
