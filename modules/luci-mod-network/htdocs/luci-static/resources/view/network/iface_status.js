@@ -12,7 +12,7 @@ requestAnimationFrame(function() {
 			L.itemlist(info, [
 				_('Device'),  ifc.ifname,
 				_('Uptime'),  ifc.is_up ? '%t'.format(ifc.uptime) : null,
-				_('MAC'),     ifc.ifname ? ifc.macaddr : null,
+				_('MAC'),     (ifc.ifname && ifc.macaddr != "00:00:00:00:00:00") ? ifc.macaddr : null,
 				_('RX'),      ifc.ifname ? '%.2mB (%d %s)'.format(ifc.rx_bytes, ifc.rx_packets, _('Pkts.')) : null,
 				_('TX'),      ifc.ifname ? '%.2mB (%d %s)'.format(ifc.tx_bytes, ifc.tx_packets, _('Pkts.')) : null,
 				_('IPv4'),    ifc.ipaddrs ? ifc.ipaddrs[0] : null,
