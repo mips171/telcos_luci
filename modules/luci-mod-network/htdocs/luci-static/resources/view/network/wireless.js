@@ -1,5 +1,5 @@
 function wifi_delete(ev) {
-	if (!confirm(_('Really delete this wireless network? The deletion cannot be undone! You might lose access to this device if you are connected via this network.'))) {
+	if (!confirm(_('Caution: You might lose access to this device if you are connected via this network.'))) {
 		ev.preventDefault();
 		return false;
 	}
