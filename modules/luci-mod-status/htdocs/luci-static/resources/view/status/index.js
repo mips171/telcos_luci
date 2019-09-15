@@ -50,7 +50,7 @@ L.poll(5, L.location(), { status: 1 },
 				[ E('div', {}, renderBadge(
 				L.resource('icons/%s.png').format((ifc && ifc.type) ? ifc.type : 'ethernet_disabled'), null,
 				_('Device'), ifc ? (ifc.name || ifc.ifname || '-') : '-',
-				_('MAC-Address'), (ifc && ifc.ether) ? ifc.mac : null)) ],
+				_('MAC-Address'), (ifc && ifc.ether && ifc.mac != "00:00:00:00:00:00") ? ifc.mac : null)) ],
 				_('Protocol'), ifc.i18n || E('em', _('Not connected')),
 				_('Address'), (ifc.ipaddrs) ? ifc.ipaddrs[0] : null,
 				_('Address'), (ifc.ipaddrs) ? ifc.ipaddrs[1] : null,
