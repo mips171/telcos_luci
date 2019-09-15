@@ -62,17 +62,9 @@ end
 -- Application specific information functions
 function app_description()
 	local tmp = {}
-	tmp[#tmp+1] =	translate("Dynamic DNS allows that your router can be reached with \
+	tmp[#tmp+1] =	translate("Dynamic DNS lets your router be reached with \
 								a fixed hostname while having a dynamically changing IP address.")
 	tmp[#tmp+1] =	[[<br />]]
-	tmp[#tmp+1] =	translate("OpenWrt Wiki") .. ": "
-	tmp[#tmp+1] =	[[<a href="https://openwrt.org/docs/guide-user/services/ddns/client" target="_blank">]]
-	tmp[#tmp+1] =	translate("DDNS Client Documentation")
-	tmp[#tmp+1] =	[[</a>]]
-	tmp[#tmp+1] =	" --- "
-	tmp[#tmp+1] =	[[<a href="https://openwrt.org/docs/guide-user/base-system/ddns" target="_blank">]]
-	tmp[#tmp+1] =	translate("DDNS Client Configuration")
-	tmp[#tmp+1] =	[[</a>]]
 	
 	return table.concat(tmp)
 end
@@ -89,20 +81,6 @@ end
 -- Standardized application/service functions
 function app_title_main()
 	local tmp = {}
-	tmp[#tmp+1] = 	[[<a href="javascript:alert(']]
-	tmp[#tmp+1] = 		 translate("Version Information")
-	tmp[#tmp+1] = 		 [[\n\n]] .. app_name
-	tmp[#tmp+1] = 		 [[\n]] .. translate("Version") .. [[: ]] .. app_version
-	tmp[#tmp+1] = 		 [[\n\n]] .. srv_name .. [[ ]] .. translate("required") .. [[:]]
-	tmp[#tmp+1] = 		 [[\n]] .. translate("Version") .. [[: ]]
-	tmp[#tmp+1] = 			 srv_ver_min .. [[ ]] .. translate("or higher")
-	tmp[#tmp+1] = 		 [[\n\n]] .. srv_name .. [[ ]] .. translate("installed") .. [[:]]
-	tmp[#tmp+1] = 		 [[\n]] .. translate("Version") .. [[: ]]
-	tmp[#tmp+1] = 			 (service_version() or translate("NOT installed"))
-	tmp[#tmp+1] = 		 [[\n\n]]
-	tmp[#tmp+1] = 	 [[')">]]
-	tmp[#tmp+1] = 	 translate(app_title)
-	tmp[#tmp+1] = 	 [[</a>]]
 		
 	return table.concat(tmp)
 end
