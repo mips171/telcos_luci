@@ -20,7 +20,7 @@ s.addremove = false
 
 s:tab("general",  translate("General Settings"))
 s:tab("logging",  translate("Logging"))
-s:tab("language", translate("Language and Style"))
+s:tab("language", translate("Language and Theme"))
 
 
 --
@@ -129,7 +129,7 @@ function o.write(self, section, value)
 end
 
 
-o = s:taboption("language", ListValue, "_mediaurlbase", translate("Design"))
+o = s:taboption("language", ListValue, "_mediaurlbase", translate("Theme"))
 for k, v in pairs(conf.themes) do
 	if k:sub(1, 1) ~= "." then
 		o:value(v, k)
@@ -155,7 +155,7 @@ if has_ntpd then
 	if m:formvalue("cbid.system._timeserver._enable") then
 		m.uci:section("system", "timeserver", "ntp",
 			{
-                	server = { "0.openwrt.pool.ntp.org", "1.openwrt.pool.ntp.org", "2.openwrt.pool.ntp.org", "3.openwrt.pool.ntp.org" }
+                	server = { "0.au.pool.ntp.org", "1.au.pool.ntp.org", "2.au.pool.ntp.org", "3.au.pool.ntp.org" }
 			}
 		)
 

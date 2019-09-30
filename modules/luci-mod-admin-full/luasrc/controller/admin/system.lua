@@ -14,8 +14,8 @@ function index()
 	entry({"admin", "system", "admin"}, cbi("admin_system/admin"), _("Administration"), 2)
 
 	if fs.access("/bin/opkg") then
-		entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
-		entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
+		--entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
+		--entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
 	end
 
 	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
@@ -29,10 +29,10 @@ function index()
 
 	local nodes, number = fs.glob("/sys/class/leds/*")
 	if number > 0 then
-		entry({"admin", "system", "leds"}, cbi("admin_system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
+	--	entry({"admin", "system", "leds"}, cbi("admin_system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
 	end
 
-	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Backup / Flash Firmware"), 70)
+	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Firmware and Backup"), 70)
 	entry({"admin", "system", "flashops", "reset"}, post("action_reset"))
 	entry({"admin", "system", "flashops", "backup"}, post("action_backup"))
 	entry({"admin", "system", "flashops", "backupfiles"}, form("admin_system/backupfiles"))
@@ -293,8 +293,8 @@ function action_sysupgrade()
 	elseif step == 2 then
 		local keep = (http.formvalue("keep") == "1") and "" or "-n"
 		luci.template.render("admin_system/applyreboot", {
-			title = luci.i18n.translate("Flashing..."),
-			msg   = luci.i18n.translate("The system is flashing now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),
+			title = luci.i18n.translate("Installing firmware..."),
+			msg   = luci.i18n.translate("The system is flashing now.<br /> DO NOT POWER OFF THE DEVICE!<br /> Wait a few minutes before you try to reconnect. It might be necessary to renew the address of your computer to reach the device again, depending on your settings."),				msg   = luci.i18n.translate("Your Telco Electronics device is installing firmware.<br><b>Do not power off the device until the login screen is available again.</b><hr><h4>Reconnecting</h4><p>To reach the device again it may be necessary to renew the IP address of your computer or reconnect to one of the wireless networks.</p> <p>The device will attempt to bring you back to the login screen after the upgrade completes but you can also refresh this page manually.  If you are remotely upgrading firmware, wait 3 to 5 minutes before trying to reconnect.</p><br><h4>Information</h4><p>The default IP address is: <a href='https://192.168.1.1'>192.168.1.1</a><br>The default wireless network name is: <em><u>Telco T1 2.4GHz</u></em></p>"
 			addr  = (#keep > 0) and "192.168.1.1" or nil
 		})
 		fork_exec("sleep 1; killall dropbear uhttpd; sleep 1; /sbin/sysupgrade %s %q" %{ keep, image_tmp })
@@ -305,7 +305,7 @@ function action_backup()
 	local reader = ltn12_popen("sysupgrade --create-backup - 2>/dev/null")
 
 	luci.http.header(
-		'Content-Disposition', 'attachment; filename="backup-%s-%s.tar.gz"' %{
+		'Content-Disposition', 'attachment; filename="TelcoElectronics_backup-%s-%s.tar.gz"' %{
 			luci.sys.hostname(),
 			os.date("%Y-%m-%d")
 		})
@@ -362,7 +362,7 @@ function action_reset()
 	if supports_reset() then
 		luci.template.render("admin_system/applyreboot", {
 			title = luci.i18n.translate("Erasing..."),
-			msg   = luci.i18n.translate("The system is erasing the configuration partition now and will reboot itself when finished."),
+			msg   = luci.i18n.translate("The system is erasing the configuration partition now and will reboot itself when finished.  This process normally takes 3 to 5 minutes."),
 			addr  = "192.168.1.1"
 		})
 
