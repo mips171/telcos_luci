@@ -8,13 +8,14 @@
 
 <h2 name="content"><%:Reboot%></h2>
 
-<p><%:Reboots the operating system of your device%></p>
+<p><%:Reboots the operating system of your device. Rebooting takes approximately three minutes%></p>
 
 <%- local c = require("luci.model.uci").cursor():changes(); if c and next(c) then -%>
-	<p class="alert-message warning"><%:Warning: There are unsaved changes that will get lost on reboot!%></p>
+	<p class="alert-message warning"><%:Warning: There are unsaved changes that will be lost on reboot. <br>If you want to review the changes first, click the <em>unsaved changes</em> button in the upper right-hand corner.%></p>
 <%- end -%>
 
 <hr />
+<script src="<%=resource%>/bars.js"></script>
 
 <input class="cbi-button cbi-button-action important" type="button" value="<%:Perform reboot%>" onclick="reboot(this)" />
 
@@ -46,7 +47,7 @@
 		if (tries++ >= 30) {
 			message.classList.remove('notice');
 			message.classList.add('warning');
-			label.innerHTML = '<%:Device unreachable! Still waiting for device...%>';
+			label.innerHTML = '<%:Unable to reach to the device.  You may need to reconnect to the wireless network or check the IP settings of your computer.  <br>The default IP address of this device is <a href="https://192.168.1.1">192.168.1.1</a>. <br>The default wireless network name is Telco T1 2.4GHz.%>';
 		}
 	}
 
@@ -59,4 +60,10 @@
 	}
 //]]></script>
 
+<input class="cbi-button cbi-button-apply" type="button" value="<%:Perform reboot%>" onclick="reboot(this)" />
+
+	<span id="reboot-message" style="display: none;">
+	<h1>Reboot progress</h1><div id='progressbar_reboot'></div><script>addEventListener('load', function() {  createProgressbar('progressbar_reboot', '80s', function() {    window.location.href = (window.location.protocol + "//" + window.location.host)  });});</script>
+	<%:Your Telco Electronics T1 is rebooting...%></span>
+	
 <%+footer%>
