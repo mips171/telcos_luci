@@ -8,14 +8,14 @@ function index()
 	local fs = require "nixio.fs"
 
 	entry({"admin", "system"}, alias("admin", "system", "system"), _("System"), 30).index = true
-	entry({"admin", "system", "system"}, cbi("admin_system/system"), _("System"), 1)
+	entry({"admin", "system", "system"}, cbi("admin_system/system"), _("System Settings"), 1)
 	entry({"admin", "system", "clock_status"}, post_on({ set = true }, "action_clock_status"))
 
-	entry({"admin", "system", "admin"}, cbi("admin_system/admin"), _("Administration"), 2)
+	entry({"admin", "system", "admin"}, cbi("admin_system/admin"), _("Password and SSH"), 2)
 
 	if fs.access("/bin/opkg") then
-		entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
-		entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
+--		entry({"admin", "system", "packages"}, post_on({ exec = "1" }, "action_packages"), _("Software"), 10)
+--		entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
 	end
 
 	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
@@ -29,10 +29,10 @@ function index()
 
 	local nodes, number = fs.glob("/sys/class/leds/*")
 	if number > 0 then
-		entry({"admin", "system", "leds"}, cbi("admin_system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
+--		entry({"admin", "system", "leds"}, cbi("admin_system/leds"), _("<abbr title=\"Light Emitting Diode\">LED</abbr> Configuration"), 60)
 	end
 
-	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Backup / Flash Firmware"), 70)
+	entry({"admin", "system", "flashops"}, call("action_flashops"), _("Firmware and Backup"), 70)
 	entry({"admin", "system", "flashops", "reset"}, post("action_reset"))
 	entry({"admin", "system", "flashops", "backup"}, post("action_backup"))
 	entry({"admin", "system", "flashops", "backupfiles"}, form("admin_system/backupfiles"))
