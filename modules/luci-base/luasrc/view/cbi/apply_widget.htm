@@ -1,4 +1,5 @@
 <% export("cbi_apply_widget", function(redirect_ok, rollback_token) -%>
+<script src="<%=resource%>/bars.js"></script>
 <style type="text/css">
 	#cbi_apply_overlay {
 		position: absolute;
@@ -44,15 +45,17 @@
 </style>
 
 <script type="text/javascript" src="<%=resource%>/cbi.js?v=git-18.138.59467-72fe5dd"></script>
+
 <script type="text/javascript">//<![CDATA[
 	var xhr = new XHR(),
 	    uci_apply_auth = { sid: '<%=luci.dispatcher.context.authsession%>', token: '<%=token%>' },
-	    uci_apply_rollback = <%=math.max(luci.config and luci.config.apply and luci.config.apply.rollback or 30, 30)%>,
+	    uci_apply_rollback = <%=math.max(luci.config and luci.config.apply and luci.config.apply.rollback or 10, 20)%>,
 	    uci_apply_holdoff = <%=math.max(luci.config and luci.config.apply and luci.config.apply.holdoff or 4, 1)%>,
 	    uci_apply_timeout = <%=math.max(luci.config and luci.config.apply and luci.config.apply.timeout or 5, 1)%>,
 	    uci_apply_display = <%=math.max(luci.config and luci.config.apply and luci.config.apply.display or 1.5, 1)%>,
 	    uci_confirm_auth = <% if rollback_token then %>{ token: '<%=rollback_token%>' }<% else %>null<% end %>,
 	    was_xhr_poll_running = false;
+	    
 
 	function uci_status_message(type, content) {
 		var overlay = document.getElementById('cbi_apply_overlay') || document.body.appendChild(E('<div id="cbi_apply_overlay"><div class="alert-message"></div></div>')),
@@ -65,16 +68,20 @@
 				message.classList.add(type);
 			}
 
-			if (content)
+			if (content) {
 				message.innerHTML = content;
 
 			document.body.classList.add('apply-overlay-active');
+			}
 
 			if (!was_xhr_poll_running) {
 				was_xhr_poll_running = XHR.running();
 				XHR.halt();
 			}
+			
 		}
+		
+
 		else {
 			document.body.classList.remove('apply-overlay-active');
 
@@ -122,8 +129,8 @@
 		var tt;
 		var ts = Date.now();
 
-		uci_status_message('notice');
-
+		uci_status_message('notice', 'Applying changes...<br><div id="progressbar1"></div>');
+		createProgressbar('progressbar1', '5s', null);
 		var call = function(r, data, duration) {
 			if (Date.now() >= deadline) {
 				uci_rollback(checked);
@@ -155,11 +162,7 @@
 
 		var tick = function() {
 			var now = Date.now();
-
-			uci_status_message('notice',
-				'<img src="<%=resource%>/icons/loading.gif" alt="" style="vertical-align:middle" /> ' +
-				'<%:Waiting for configuration to be applied… %ds%>'.format(Math.max(Math.floor((deadline - Date.now()) / 1000), 0)));
-
+			
 			if (now >= deadline)
 				return;
 
@@ -175,8 +178,7 @@
 
 	function uci_apply(checked) {
 		uci_status_message('notice',
-			'<img src="<%=resource%>/icons/loading.gif" alt="" style="vertical-align:middle" /> ' +
-			'<%:Starting configuration apply…%>');
+			'<%:Applying changes…%>');
 
 		xhr.post('<%=url("admin/uci")%>/' + (checked ? 'apply_rollback' : 'apply_unchecked'), uci_apply_auth, function(r, tok) {
 			if (r.status === (checked ? 200 : 204)) {
@@ -226,3 +228,4 @@
 	}
 //]]></script>
 <%-	end) %>
+
