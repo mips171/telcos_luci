@@ -7,7 +7,7 @@ module("luci.controller.admin.system", package.seeall)
 function index()
 	local fs = require "nixio.fs"
 
-	entry({"admin", "system"}, alias("admin", "system", "system"), _("System"), 30).index = true
+	entry({"admin", "system"}, alias("admin", "system", "system"), _("System"), 50).index = true
 	entry({"admin", "system", "system"}, cbi("admin_system/system"), _("System Settings"), 1)
 	entry({"admin", "system", "clock_status"}, post_on({ set = true }, "action_clock_status"))
 
@@ -18,8 +18,8 @@ function index()
 --		entry({"admin", "system", "packages", "ipkg"}, form("admin_system/ipkg"))
 	end
 
-	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
-	entry({"admin", "system", "crontab"}, form("admin_system/crontab"), _("Scheduled Tasks"), 46)
+--	entry({"admin", "system", "startup"}, form("admin_system/startup"), _("Startup"), 45)
+--	entry({"admin", "system", "crontab"}, form("admin_system/crontab"), _("Scheduled Tasks"), 46)
 
 	if fs.access("/sbin/block") and fs.access("/etc/config/fstab") then
 		entry({"admin", "system", "fstab"}, cbi("admin_system/fstab"), _("Mount Points"), 50)
