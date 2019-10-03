@@ -49,8 +49,6 @@ function index()
 
 	entry( {"admin", "services", "ddns"}, cbi("ddns/overview"), _("Dynamic DNS"), 59)
 	entry( {"admin", "services", "ddns", "detail"}, cbi("ddns/detail"), nil ).leaf = true
-	entry( {"admin", "services", "ddns", "hints"}, cbi("ddns/hints",
-		{hideapplybtn=true, hidesavebtn=true, hideresetbtn=true}), nil ).leaf = true
 	entry( {"admin", "services", "ddns", "global"}, cbi("ddns/global"), nil ).leaf = true
 	entry( {"admin", "services", "ddns", "logview"}, call("logread") ).leaf = true
 	entry( {"admin", "services", "ddns", "startstop"}, post("startstop") ).leaf = true
@@ -59,42 +57,16 @@ end
 
 -- Application specific information functions
 function app_description()
-	return	I18N.translate("Dynamic DNS allows that your router can be reached with " ..
+	return	I18N.translate("Dynamic DNS allows your router to be reached with " ..
 			"a fixed hostname while having a dynamically changing IP address.")
-		.. [[<br />]]
-		.. I18N.translate("OpenWrt Wiki") .. ": "
-		.. [[<a href="http://wiki.openwrt.org/doc/howto/ddns.client" target="_blank">]]
-		.. I18N.translate("DDNS Client Documentation") .. [[</a>]]
-		.. " --- "
-		.. [[<a href="http://wiki.openwrt.org/doc/uci/ddns" target="_blank">]]
-		.. I18N.translate("DDNS Client Configuration") .. [[</a>]]
 end
 function app_title_back()
-	return	[[<a href="]]
-		.. DISP.build_url("admin", "services", "ddns")
-		.. [[">]]
-		.. I18N.translate(app_title)
-		.. [[</a>]]
+	return I18N.translate(app_title)
 end
 
 -- Standardized application/service functions
 function app_title_main()
 	tmp = {}
-	tmp[#tmp+1] = 	[[<a href="javascript:alert(']]
-	tmp[#tmp+1] = 		 I18N.translate("Version Information")
-	tmp[#tmp+1] = 		 [[\n\n]] .. app_name
-	tmp[#tmp+1] = 		 [[\n]] .. I18N.translate("Version") .. [[: ]] .. app_version
-	tmp[#tmp+1] = 		 [[\n\n]] .. srv_name .. [[ ]] .. I18N.translate("required") .. [[:]]
-	tmp[#tmp+1] = 		 [[\n]] .. I18N.translate("Version") .. [[: ]]
-	tmp[#tmp+1] = 			 srv_ver_min .. [[ ]] .. I18N.translate("or higher")
-	tmp[#tmp+1] = 		 [[\n\n]] .. srv_name .. [[ ]] .. I18N.translate("installed") .. [[:]]
-	tmp[#tmp+1] = 		 [[\n]] .. I18N.translate("Version") .. [[: ]]
-	tmp[#tmp+1] = 			 (service_version() or I18N.translate("NOT installed"))
-	tmp[#tmp+1] = 		 [[\n\n]]
-	tmp[#tmp+1] = 	 [[')">]]
-	tmp[#tmp+1] = 	 I18N.translate(app_title)
-	tmp[#tmp+1] = 	 [[</a>]]
-		
 	return table.concat(tmp)
 end
 

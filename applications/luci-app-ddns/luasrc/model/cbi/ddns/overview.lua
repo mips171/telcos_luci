@@ -7,15 +7,7 @@ local SYS  = require "luci.sys"
 local CTRL = require "luci.controller.ddns"	-- this application's controller
 local DDNS = require "luci.tools.ddns"		-- ddns multiused functions
 
-local show_hints = not (DDNS.env_info("has_ipv6")		-- IPv6 support
-				   and  DDNS.env_info("has_ssl")		-- HTTPS support
-				   and  DDNS.env_info("has_proxy")		-- Proxy support
-				   and  DDNS.env_info("has_bindhost")	-- DNS TCP support
-				   and  DDNS.env_info("has_forceip")	-- Force IP version
-				   and  DDNS.env_info("has_dnsserver")	-- DNS server support
-				   and  DDNS.env_info("has_bindnet")	-- Bind to network/interface
-				   and  DDNS.env_info("has_cacerts")	-- certificates installed at /etc/ssl/certs
-		)
+local show_hints = false
 local not_enabled = not SYS.init.enabled("ddns")
 local need_update = not CTRL.service_ok()
 
@@ -79,13 +71,6 @@ if show_hints or need_update or not_enabled then
 
 	-- Show more hints on a separate page
 	if show_hints then
-		local dv = s:option(DummyValue, "_separate")
-		dv.titleref = DISP.build_url("admin", "services", "ddns", "hints")
-		dv.rawhtml  = true
-		dv.title = bold_on ..
-			translate("Show more") .. bold_off
-		dv.value = translate("Follow this link" .. "<br />" ..
-				"You will find more hints to optimize your system to run DDNS scripts with all options")
 	end
 end
 
@@ -96,9 +81,7 @@ ts = m:section( TypedSection, "service",
 	.. "<br />"
 	.. translate("If you want to send updates for IPv4 and IPv6 you need to define two separate Configurations "
 		.. "i.e. 'myddns_ipv4' and 'myddns_ipv6'")
-	.. "<br />"
-	.. [[<a href="]] .. DISP.build_url("admin", "services", "ddns", "global") .. [[">]]
-	.. translate("To change global settings click here") .. [[</a>]] )
+	.. "<br />" )
 ts.sectionhead = translate("Configuration")
 ts.template = "cbi/tblsection"
 ts.addremove = true
