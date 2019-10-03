@@ -16,7 +16,7 @@
 					if (ifc.is_up)
 						html += String.format('<strong><%:Uptime%>:</strong> %t<br />', ifc.uptime);
 
-					if (ifc.macaddr)
+					if (ifc.macaddr && ifc.macaddr != "00:00:00:00:00:00")
 						html += String.format('<strong><%:MAC%>:</strong> %s<br />', ifc.macaddr);
 
 					html += String.format(
