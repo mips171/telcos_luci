@@ -185,7 +185,7 @@
 				[ E('div', {}, renderBadge(
 					'<%=resource%>/icons/%s.png'.format((ifc && ifc.type) ? ifc.type : 'ethernet_disabled'), null,
 					'<%:Device%>', ifc ? (ifc.name || ifc.ifname || '-') : '-',
-					'<%:MAC-Address%>', (ifc && ifc.ether) ? ifc.mac : null)) ],
+					'<%:MAC-Address%>', (ifc && ifc.ether && ifc.mac != '00:00:00:00:00:00') ? ifc.mac : null)) ],
 				'<%:Protocol%>', ifc.i18n || E('em', '<%:Not connected%>'),
 				'<%:Address%>', (ifc.ipaddr) ? ifc.ipaddr : '0.0.0.0',
 				'<%:Netmask%>', (ifc.netmask && ifc.netmask != ifc.ipaddr) ? ifc.netmask : '255.255.255.255',
@@ -207,7 +207,7 @@
 				[ E('div', {}, renderBadge(
 					'<%=resource%>/icons/%s.png'.format(ifc6.type || 'ethernet_disabled'), null,
 					'<%:Device%>', ifc6 ? (ifc6.name || ifc6.ifname || '-') : '-',
-					'<%:MAC-Address%>', (ifc6 && ifc6.ether) ? ifc6.mac : null)) ],
+					'<%:MAC-Address%>', (ifc6 && ifc6.ether && ifc6.mac != '00:00:00:00:00:00') ? ifc6.mac : null)) ],
 				'<%:Protocol%>', ifc6.i18n ? (ifc6.i18n + (ifc6.proto === 'dhcp' && ifc6.ip6prefix ? '-PD' : '')) : E('em', '<%:Not connected%>'),
 				'<%:Prefix Delegated%>', ifc6.ip6prefix,
 				'<%:Address%>', (ifc6.ip6prefix) ? (ifc6.ip6addr || null) : (ifc6.ipaddr || '::'),

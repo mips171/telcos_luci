@@ -18,7 +18,7 @@
 
 					if (ifc.macaddr && ifc.macaddr != "00:00:00:00:00:00")
 						html += String.format('<strong><%:MAC%>:</strong> %s<br />', ifc.macaddr);
-
+					
 					html += String.format(
 						'<strong><%:RX%></strong>: %.2mB (%d <%:Pkts.%>)<br />' +
 						'<strong><%:TX%></strong>: %.2mB (%d <%:Pkts.%>)<br />',

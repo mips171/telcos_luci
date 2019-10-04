@@ -109,7 +109,7 @@
 
 						if (!ifc.is_dynamic && !ifc.is_alias)
 						{
-							if (ifc.macaddr)
+							if (ifc.macaddr && ifc.macaddr != "00:00:00:00:00:00")
 								html += String.format('<strong><%:MAC%>:</strong> %s<br />', ifc.macaddr);
 
 							html += String.format(
