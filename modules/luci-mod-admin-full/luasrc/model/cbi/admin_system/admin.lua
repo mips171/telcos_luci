@@ -44,9 +44,9 @@ end
 if fs.access("/etc/config/dropbear") then
 
 m2 = Map("dropbear", translate("SSH Access"),
-	translate("Dropbear offers <abbr title=\"Secure Shell\">SSH</abbr> network shell access and an integrated <abbr title=\"Secure Copy\">SCP</abbr> server"))
+	translate("<abbr title=\"Secure Shell\">SSH</abbr> network shell access and an integrated <abbr title=\"Secure Copy\">SCP</abbr> server"))
 
-s = m2:section(TypedSection, "dropbear", translate("Dropbear Instance"))
+s = m2:section(TypedSection, "dropbear", translate("SSH Server Instance"))
 s.anonymous = true
 s.addremove = true
 
@@ -60,7 +60,7 @@ ni.unspecified = true
 
 
 pt = s:option(Value, "Port", translate("Port"),
-	translate("Specifies the listening port of this <em>Dropbear</em> instance"))
+	translate("Specifies the listening port of this <em>ssh server</em> instance"))
 
 pt.datatype = "port"
 pt.default  = 22
