@@ -365,43 +365,6 @@
 <h2 name="content"><%:Live Overview%></h2>
 
 <div class="cbi-section">
-	<h3><%:System%></h3>
-
-	<div class="table" width="100%">
-		<div class="tr"><div class="td left" width="33%"><%:Hostname%></div><div class="td left"><%=luci.sys.hostname() or "?"%></div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Model%></div><div class="td left"><%=pcdata(boardinfo.model or "?")%></div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Firmware Version%></div><div class="td left">
-        <%=luci.sys.exec("uci get system.@system[0].osstring") or "?" %>                                                                    
-		</div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Kernel Version%></div><div class="td left"><%=unameinfo.release or "?"%></div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Local Time%></div><div class="td left" id="localtime">-</div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Uptime%></div><div class="td left" id="uptime">-</div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Load Average%></div><div class="td left" id="loadavg">-</div></div>
-	</div>
-</div>
-
-<div class="cbi-section">
-	<h3><%:Memory%></h3>
-
-	<div class="table" width="100%">
-		<div class="tr"><div class="td left" width="33%"><%:Total Available%></div><div class="td left" id="memtotal">-</div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Free%></div><div class="td left" id="memfree">-</div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Buffered%></div><div class="td left" id="membuff">-</div></div>
-	</div>
-</div>
-
-<% if swapinfo.total > 0 then %>
-<div class="cbi-section">
-	<h3><%:Swap%></h3>
-
-	<div class="table" width="100%">
-		<div class="tr"><div class="td left" width="33%"><%:Total Available%></div><div class="td left" id="swaptotal">-</div></div>
-		<div class="tr"><div class="td left" width="33%"><%:Free%></div><div class="td left" id="swapfree">-</div></div>
-	</div>
-</div>
-<% end %>
-
-<div class="cbi-section">
 	<h3><%:Network%></h3>
 
 	<div id="upstream_status_table" class="network-status-table">
