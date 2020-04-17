@@ -8,7 +8,7 @@ local dump = util.ubus("network.interface", "dump", {})
 
 m = Map("adblock", translate("Adblock"),
 	translate("Adblock will block all domains in the selected lists.  You can blacklist and whitelist domains in the Advanced configuration section.  Lists below contain ad/abuse domains and are updated regularly by community maintainers. Your device will regularly fetch the updated lists.")
-))
+)
 
 -- Main adblock options
 
