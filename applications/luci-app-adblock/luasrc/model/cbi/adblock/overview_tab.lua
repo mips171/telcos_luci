@@ -22,9 +22,9 @@ o2 = s:option(ListValue, "adb_dns", translate("DNS Backend (DNS Directory)"),
 	translate("List of supported DNS backends with their default list export directory. ")
 	.. translate("To overwrite the default path use the 'DNS Directory' option in the extra section below."))
 o2:value("dnsmasq", "dnsmasq (/tmp)")
-o2:value("unbound", "unbound (/var/lib/unbound)")
-o2:value("named", "named (/var/lib/bind)")
-o2:value("kresd", "kresd (/etc/kresd)")
+--o2:value("unbound", "unbound (/var/lib/unbound)")
+--o2:value("named", "named (/var/lib/bind)")
+--o2:value("kresd", "kresd (/etc/kresd)")
 o2:value("dnscrypt-proxy","dnscrypt-proxy (/tmp)")
 o2.default = "dnsmasq (/tmp)"
 o2.rmempty = false
@@ -41,8 +41,8 @@ o3.default = "uclient-fetch"
 o3.rmempty = false
 
 o4 = s:option(ListValue, "adb_trigger", translate("Startup Trigger"),
-	translate("List of available network interfaces. Usually the startup will be triggered by the 'wan' interface. ")
-	.. translate("Choose 'none' to disable automatic startups, 'timed' to use a classic timeout (default 30 sec.) or select another trigger interface."))
+	translate("You can start adblock 30s after the device boots up, or when a particular network interface comes online. ")
+	.. translate("Choose 'none' to disable automatic startups, 'timed' to use a classic timeout (default 30 sec.) or select a trigger interface."))
 o4:value("none")
 o4:value("timed")
 if dump then
@@ -54,6 +54,7 @@ if dump then
 	end
 end
 o4.rmempty = false
+o4.default = "timed"
 
 -- Runtime information
 
@@ -63,7 +64,7 @@ ds.template = "adblock/runtime"
 -- Blocklist table
 
 bl = m:section(TypedSection, "source", translate("Blocklist Sources"),
-	translate("<b>Advisory:</b>For best performance we recommend selecting a maximum of 5 lists as some of the lists can be quite long."))
+	translate("<b>Advisory:</b> For best performance we recommend selecting a maximum of 5 lists as some of the lists can be quite long."))
 bl.template = "adblock/blocklist"
 
 name = bl:option(Flag, "enabled", translate("Enabled"))
