@@ -7,10 +7,8 @@ local util = require("luci.util")
 local dump = util.ubus("network.interface", "dump", {})
 
 m = Map("adblock", translate("Adblock"),
-	translate("Configuration of the adblock package to block ad/abuse domains by using DNS. ")
-	.. translatef("For further information "
-	.. "<a href=\"%s\" target=\"_blank\">"
-	.. "check the online documentation</a>", "https://github.com/openwrt/packages/blob/master/net/adblock/files/README.md"))
+	translate("Adblock will block all domains in the selected lists.  You can blacklist and whitelist domains in the Advanced configuration section.  Lists below contain ad/abuse domains and are updated regularly by community maintainers. Your device will regularly fetch the updated lists.")
+))
 
 -- Main adblock options
 
@@ -65,7 +63,7 @@ ds.template = "adblock/runtime"
 -- Blocklist table
 
 bl = m:section(TypedSection, "source", translate("Blocklist Sources"),
-	translate("<b>Caution:</b> To prevent OOM exceptions on low memory devices with less than 64 MB free RAM, please only select a few of them!"))
+	translate("<b>Advisory:</b>For best performance we recommend selecting a maximum of 5 lists as some of the lists can be quite long."))
 bl.template = "adblock/blocklist"
 
 name = bl:option(Flag, "enabled", translate("Enabled"))
@@ -90,7 +88,7 @@ cat.optional = true
 -- Extra options
 
 e = m:section(NamedSection, "extra", "adblock", translate("Extra Options"),
-	translate("Options for further tweaking in case the defaults are not suitable for you."))
+	translate("Extra options."))
 
 e1 = e:option(Flag, "adb_debug", translate("Verbose Debug Logging"),
 	translate("Enable verbose debug logging in case of any processing error."))
