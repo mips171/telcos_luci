@@ -7,8 +7,10 @@ local util = require("luci.util")
 local dump = util.ubus("network.interface", "dump", {})
 
 m = Map("adblock", translate("Adblock"),
-	translate("Adblock will block all domains in the selected lists.  You can blacklist and whitelist domains in the Advanced configuration section.  Lists below contain ad/abuse domains and are updated regularly by community maintainers. Your device will regularly fetch the updated lists.")
-)
+	translate("Configuration of the adblock package to block ad/abuse domains by using DNS. ")
+	.. translatef("For further information "
+	.. "<a href=\"%s\" target=\"_blank\">"
+	.. "check the online documentation</a>", "https://github.com/openwrt/packages/blob/master/net/adblock/files/README.md"))
 
 -- Main adblock options
 
@@ -22,9 +24,9 @@ o2 = s:option(ListValue, "adb_dns", translate("DNS Backend (DNS Directory)"),
 	translate("List of supported DNS backends with their default list export directory. ")
 	.. translate("To overwrite the default path use the 'DNS Directory' option in the extra section below."))
 o2:value("dnsmasq", "dnsmasq (/tmp)")
---o2:value("unbound", "unbound (/var/lib/unbound)")
---o2:value("named", "named (/var/lib/bind)")
---o2:value("kresd", "kresd (/etc/kresd)")
+o2:value("unbound", "unbound (/var/lib/unbound)")
+o2:value("named", "named (/var/lib/bind)")
+o2:value("kresd", "kresd (/etc/kresd)")
 o2:value("dnscrypt-proxy","dnscrypt-proxy (/tmp)")
 o2.default = "dnsmasq (/tmp)"
 o2.rmempty = false
@@ -41,8 +43,8 @@ o3.default = "uclient-fetch"
 o3.rmempty = false
 
 o4 = s:option(ListValue, "adb_trigger", translate("Startup Trigger"),
-	translate("You can start adblock 30s after the device boots up, or when a particular network interface comes online. ")
-	.. translate("Choose 'none' to disable automatic startups, 'timed' to use a classic timeout (default 30 sec.) or select a trigger interface."))
+	translate("List of available network interfaces. Usually the startup will be triggered by the 'wan' interface. ")
+	.. translate("Choose 'none' to disable automatic startups, 'timed' to use a classic timeout (default 30 sec.) or select another trigger interface."))
 o4:value("none")
 o4:value("timed")
 if dump then
@@ -54,7 +56,6 @@ if dump then
 	end
 end
 o4.rmempty = false
-o4.default = "timed"
 
 -- Runtime information
 
@@ -64,7 +65,7 @@ ds.template = "adblock/runtime"
 -- Blocklist table
 
 bl = m:section(TypedSection, "source", translate("Blocklist Sources"),
-	translate("<b>Advisory:</b> For best performance we recommend selecting a maximum of 5 lists as some of the lists can be quite long."))
+	translate("<b>Caution:</b> To prevent OOM exceptions on low memory devices with less than 64 MB free RAM, please only select a few of them!"))
 bl.template = "adblock/blocklist"
 
 name = bl:option(Flag, "enabled", translate("Enabled"))
@@ -89,7 +90,7 @@ cat.optional = true
 -- Extra options
 
 e = m:section(NamedSection, "extra", "adblock", translate("Extra Options"),
-	translate("Extra options."))
+	translate("Options for further tweaking in case the defaults are not suitable for you."))
 
 e1 = e:option(Flag, "adb_debug", translate("Verbose Debug Logging"),
 	translate("Enable verbose debug logging in case of any processing error."))
