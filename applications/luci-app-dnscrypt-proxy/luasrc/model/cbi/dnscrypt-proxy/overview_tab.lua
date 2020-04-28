@@ -56,10 +56,7 @@ if fs.access(res_input) then
 end
 
 m = Map("dnscrypt-proxy", translate("DNSCrypt-Proxy"),
-	translate("Configuration of the DNSCrypt-Proxy package. ")
-	.. translatef("For further information "
-	.. "<a href=\"%s\" target=\"_blank\">"
-	.. "see the wiki online</a>", "https://wiki.openwrt.org/inbox/dnscrypt"))
+	translate("DNSCrypt provides additinoal security for your network by verifying that the responses received from a DNS server have not been altered and really are from that server.")
 m:chain("dhcp")
 
 function m.on_after_commit(self)
