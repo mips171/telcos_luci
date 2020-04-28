@@ -243,17 +243,17 @@ d3.addremove = false
 d3.optional = false
 
 -- Whitelisted Domains URLs
-d2 = s2:option(DynamicList, "whitelist_domains_url", translate("Whitelisted Domain Lists"), translate("URLs lists of domains to be whitelisted."))
+d2 = s2:option(DynamicList, "whitelist_domains_url", translate("Bulk Whitelisted Domain Lists"), translate("URLs lists of domains to be whitelisted."))
 d2.addremove = false
 d2.optional = false
 
 -- Blacklisted Domains URLs
-d4 = s2:option(DynamicList, "blacklist_domains_url", translate("Blacklisted Domain Lists"), translate("URLs to lists of domains to be blacklisted."))
+d4 = s2:option(DynamicList, "blacklist_domains_url", translate("Bulk Blacklisted Domain Lists"), translate("URLs to lists of domains to be blacklisted."))
 d4.addremove = false
 d4.optional = false
 
 -- Blacklisted Hosts URLs
-d5 = s2:option(DynamicList, "blacklist_hosts_url", translate("Blacklisted Hosts Lists"), translate("URLs to lists of hosts to be blacklisted."))
+d5 = s2:option(DynamicList, "blacklist_hosts_url", translate("Bulk Blacklisted Hosts Lists"), translate("URLs to lists of hosts to be blacklisted."))
 d5.addremove = false
 d5.optional = false
 
