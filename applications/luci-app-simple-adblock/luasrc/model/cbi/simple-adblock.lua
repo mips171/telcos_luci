@@ -78,7 +78,7 @@ if tmpfs and tmpfs['data'] then
 	end
 end
 
-h = m:section(NamedSection, "config", "simple-adblock", translate("Service Status") .. tmpfsVersion)
+h = m:section(NamedSection, "config", "simple-adblock", translate("Service Status") )
 
 if tmpfsStatus and tmpfsStatus:match("ing") then
 	ss = h:option(DummyValue, "_dummy", translate("Service Status"))
@@ -92,7 +92,7 @@ if tmpfsStatus and tmpfsStatus:match("ing") then
 else
 	en = h:option(Button, "__toggle")
 	if enabledFlag ~= "1" or tmpfsStatus:match("Stopped") then
-		en.title      = translate("Service is disabled/stopped")
+		en.title      = translate("Service is disabled and stopped")
 		en.inputtitle = translate("Enable/Start")
 		en.inputstyle = "apply important"
 		if fs.access(outputCache) then
@@ -105,7 +105,7 @@ else
 			sm.value = "Compressed cache file found."
 		end
 	else
-		en.title      = translate("Service is enabled/started")
+		en.title      = translate("Service is enabled and running")
 		en.inputtitle = translate("Stop/Disable")
 		en.inputstyle = "reset important"
 		ss = h:option(DummyValue, "_dummy", translate("Service Status"))
@@ -159,26 +159,10 @@ o2:value("1", translate("Some output"))
 o2:value("2", translate("Verbose output"))
 o2.default = 2
 
-o3 = s:taboption("basic", ListValue, "force_dns", translate("Force Router DNS"), translate("Forces Router DNS use on local devices, also known as DNS Hijacking."))
+o3 = s:taboption("basic", ListValue, "force_dns", translate("Force Router DNS"), translate("Forces Router DNS use on connected devices, causing them all to be protected by these block lists."))
 o3:value("0", translate("Let local devices use their own DNS servers if set"))
 o3:value("1", translate("Force Router DNS server to all local devices"))
 o3.default = 1
-
-local sysfs_path = "/sys/class/leds/"
-local leds = {}
-if nixio.fs.access(sysfs_path) then
-	leds = nixio.util.consume((nixio.fs.dir(sysfs_path)))
-end
-if #leds ~= 0 then
-	o4 = s:taboption("basic", Value, "led", translate("LED to indicate status"), translate("Pick the LED not already used in")
-		.. [[ <a href="]] .. luci.dispatcher.build_url("admin/system/leds") .. [[">]]
-		.. translate("System LED Configuration") .. [[</a>]] .. ".")
-	o4.rmempty = false
-	o4:value("", translate("none"))
-	for k, v in ipairs(leds) do
-		o4:value(v)
-	end
-end
 
 s:tab("advanced", translate("Advanced Configuration"))
 
@@ -219,15 +203,15 @@ ipv6:depends({dns="dnsmasq.addnhosts"})
 ipv6.default = ""
 ipv6.rmempty = true
 
-o5 = s:taboption("advanced", Value, "boot_delay", translate("Delay (in seconds) for on-boot start"), translate("Run service after set delay on boot."))
+o5 = s:taboption("advanced", Value, "boot_delay", translate("Startup Delay (in seconds)"), translate("Start the Adblock service this many seconds after the system boots. Default: 120."))
 o5.default = 120
 o5.datatype = "range(1,600)"
 
-o6 = s:taboption("advanced", Value, "download_timeout", translate("Download time-out (in seconds)"), translate("Stop the download if it is stalled for set number of seconds."))
+o6 = s:taboption("advanced", Value, "download_timeout", translate("Download time-out (in seconds)"), translate("Stop the download if it is stalled for set number of seconds. Default: 10"))
 o6.default = 10
 o6.datatype = "range(1,60)"
 
-o7 = s:taboption("advanced", Value, "curl_retry", translate("Curl download retry"), translate("If curl is installed and detected, it would retry download this many times on timeout/fail."))
+o7 = s:taboption("advanced", Value, "curl_retry", translate("Download retry attempts"), translate("Retry downloading lists this many times on timeout/fail."))
 o7.default = 3
 o7.datatype = "range(0,30)"
 
@@ -247,29 +231,29 @@ o11:value("1", translate("Enable Debugging"))
 o11.default = "0"
 
 
-s2 = m:section(NamedSection, "config", "simple-adblock", translate("Whitelist and Blocklist Management"))
+s2 = m:section(NamedSection, "config", "simple-adblock", translate("Whitelist and Blocklist Management"), "The Adblock service allows you to block intrusive and malicious domains.  By default, there are several community maintained lists added for you.  You can add and edit links to community-maintained lists of malicious domains, as well as block individual domains.")
 -- Whitelisted Domains
-d1 = s2:option(DynamicList, "whitelist_domain", translate("Whitelisted Domains"), translate("Individual domains to be whitelisted."))
+d1 = s2:option(DynamicList, "whitelist_domain", translate("Individually Whitelisted Domains"), translate("Add individual domains to be whitelisted."))
 d1.addremove = false
 d1.optional = false
 
 -- Blacklisted Domains
-d3 = s2:option(DynamicList, "blacklist_domain", translate("Blacklisted Domains"), translate("Individual domains to be blacklisted."))
+d3 = s2:option(DynamicList, "blacklist_domain", translate("Individually Blacklisted Domains"), translate("Add individual domains to be blacklisted."))
 d3.addremove = false
 d3.optional = false
 
 -- Whitelisted Domains URLs
-d2 = s2:option(DynamicList, "whitelist_domains_url", translate("Whitelisted Domain URLs"), translate("URLs to lists of domains to be whitelisted."))
+d2 = s2:option(DynamicList, "whitelist_domains_url", translate("Whitelisted Domain Lists"), translate("URLs lists of domains to be whitelisted."))
 d2.addremove = false
 d2.optional = false
 
 -- Blacklisted Domains URLs
-d4 = s2:option(DynamicList, "blacklist_domains_url", translate("Blacklisted Domain URLs"), translate("URLs to lists of domains to be blacklisted."))
+d4 = s2:option(DynamicList, "blacklist_domains_url", translate("Blacklisted Domain Lists"), translate("URLs to lists of domains to be blacklisted."))
 d4.addremove = false
 d4.optional = false
 
 -- Blacklisted Hosts URLs
-d5 = s2:option(DynamicList, "blacklist_hosts_url", translate("Blacklisted Hosts URLs"), translate("URLs to lists of hosts to be blacklisted."))
+d5 = s2:option(DynamicList, "blacklist_hosts_url", translate("Blacklisted Hosts Lists"), translate("URLs to lists of hosts to be blacklisted."))
 d5.addremove = false
 d5.optional = false
 
