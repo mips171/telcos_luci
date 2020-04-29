@@ -24,13 +24,13 @@ IFACE_PATTERNS_IGNORE   = { "^wmaster%d", "^wifi%d", "^hwsim%d", "^imq%d", "^ifb
 IFACE_PATTERNS_WIRELESS = { "^wlan%d", "^wl%d", "^ath%d", "^%w+%.network%d" }
 
 IFACE_ERRORS = {
-	CONNECT_FAILED			= lng.translate("Connection attempt failed"),
+	CONNECT_FAILED			= lng.translate("Connection attempt failed. Please check the settings by clicking Edit, or signal on Mobile Data Status."),
 	INVALID_ADDRESS			= lng.translate("IP address in invalid"),
 	INVALID_GATEWAY			= lng.translate("Gateway address is invalid"),
 	INVALID_LOCAL_ADDRESS	= lng.translate("Local IP address is invalid"),
 	MISSING_ADDRESS			= lng.translate("IP address is missing"),
 	MISSING_PEER_ADDRESS	= lng.translate("Peer address is missing"),
-	NO_DEVICE				= lng.translate("Network device is not present"),
+	NO_DEVICE				= lng.translate("Device is being configured. Please wait. If not resolved, please reset device."),
 	NO_IFACE				= lng.translate("Unable to determine device name"),
 	NO_IFNAME				= lng.translate("Unable to determine device name"),
 	NO_WAN_ADDRESS			= lng.translate("Unable to determine external IP address"),
