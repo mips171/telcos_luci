@@ -203,7 +203,7 @@ ipv6:depends({dns="dnsmasq.addnhosts"})
 ipv6.default = ""
 ipv6.rmempty = true
 
-o5 = s:taboption("advanced", Value, "boot_delay", translate("Startup Delay (in seconds)"), translate("Start the Adblock service this many seconds after the system boots. Default: 120."))
+o5 = s:taboption("advanced", Value, "boot_delay", translate("Startup Delay (in seconds)"), translate("Start the Adblock service this many seconds after the system boots. Default: 120"))
 o5.default = 120
 o5.datatype = "range(1,600)"
 
@@ -211,7 +211,7 @@ o6 = s:taboption("advanced", Value, "download_timeout", translate("Download time
 o6.default = 10
 o6.datatype = "range(1,60)"
 
-o7 = s:taboption("advanced", Value, "curl_retry", translate("Download retry attempts"), translate("Retry downloading lists this many times on timeout/fail."))
+o7 = s:taboption("advanced", Value, "curl_retry", translate("Download retry attempts"), translate("Retry downloading lists this many times on timeout/fail. Default: 3"))
 o7.default = 3
 o7.datatype = "range(0,30)"
 
