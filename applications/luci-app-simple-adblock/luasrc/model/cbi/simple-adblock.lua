@@ -48,7 +48,7 @@ elseif targetDNS == "unbound.adb_list" then
 	outputGzip="/etc/" .. packageName .. ".unbound.gz"
 end
 
-m = Map("simple-adblock", translate("Simple AdBlock Settings"))
+m = Map("simple-adblock", translate("Ad Blocker Settings"))
 m.apply_on_parse = true
 m.on_after_apply = function(self)
  	sys.call("/etc/init.d/simple-adblock restart")
