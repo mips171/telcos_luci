@@ -40,16 +40,16 @@ local offload = fs.access("/sys/module/xt_FLOWOFFLOAD/refcnt")
 if offload then
 	s:option(DummyValue, "offload_advice",
 		translate("Routing/NAT Offloading"),
-		translate("Experimental feature. Not fully compatible with QoS/SQM."))
+		translate("Advisory: QoS/SQM will not work correctly."))
 
 	o = s:option(Flag, "flow_offloading",
 		translate("Software flow offloading"),
-		translate("Software based offloading for routing/NAT"))
+		translate("Software based offloading for routing/NAT, can improve maximum throughput speed."))
 	o.optional = true
 
 	o = s:option(Flag, "flow_offloading_hw",
 		translate("Hardware flow offloading"),
-		translate("Requires hardware NAT support. Implemented at least for mt7621"))
+		translate("Hardware based offloading for routing/NAT, can improve maximum throughput speed."))
 	o.optional = true
 	o:depends( "flow_offloading", 1)
 end
