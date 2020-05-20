@@ -40,7 +40,7 @@
 		if (tries++ >= 100) {
 			message.classList.remove('notice');
 			message.classList.add('warning');
-			label.innerHTML = '<%:Unable to reach to the device.  You may need to reconnect to the wireless network or check the IP settings of your computer.  <br>The default IP address of this device is <a href="https://192.168.1.1">192.168.1.1</a>. <br>The default wireless network names are <em><u>Telco X1 Pro 2.4GHz</u></em> and <em><u>Telco X1 Pro 5GHz</u></em>.%>';
+			label.innerHTML = '<%:Unable to reach to the device.  You may need to reconnect to the wireless network or check the IP settings of your computer.  <br>The default IP address of this device is <a href="https://192.168.1.1">192.168.1.1</a>. <br>The default wireless network name is <em><u>Telco T1 2.4GHz</u></em>.%>';
 		}
 	}
 
@@ -61,7 +61,7 @@
 
 	<span id="reboot-message" style="display: none;">
 	<h1>Reboot progress</h1><div id='progressbar_reboot'></div><script>addEventListener('load', function() {  createProgressbar('progressbar_reboot', '180s', function() {    window.location.href = (window.location.protocol + "//" + window.location.host)  });});</script>
-	<%:Your Telco X1 Pro is rebooting...%></span>
+	<%:Your Telco device is rebooting...%></span>
 	
 
 <%+footer%>
