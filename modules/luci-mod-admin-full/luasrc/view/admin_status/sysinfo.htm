@@ -35,7 +35,7 @@
                         localtime  = os.date("%A, %d %b %Y %H:%M:%S"),
 			loadavg    = sysinfo.load or { 0, 0, 0 },
 			memory     = meminfo,
-			swap       = swapinfo
+			swap       = swapinfo		
 		}
 
 		luci.http.prepare_content("application/json")
@@ -170,6 +170,9 @@
 		<div class="tr"><div class="td left" width="33%"><%:Model%></div><div class="td left"><%=pcdata(boardinfo.model or "?")%></div></div>
 		<div class="tr"><div class="td left" width="33%"><%:Firmware Version%></div><div class="td left">
 			<%=luci.sys.exec("uci get system.@system[0].osstring") or "?" %>                                                                    
+		</div></div>
+		<div class="tr"><div class="td left" width="33%"><%:Previous Firmware Version%></div><div class="td left">
+			<%=luci.sys.exec("uci get system.@system[0].previousFirmwareVersion") or "Information Unavailable" %>                                                                    
 		</div></div>
 		<div class="tr"><div class="td left" width="33%"><%:Kernel Version%></div><div class="td left"><%=unameinfo.release or "?"%></div></div>
 		<div class="tr"><div class="td left" width="33%"><%:Local Time%></div><div class="td left" id="localtime">-</div></div>
