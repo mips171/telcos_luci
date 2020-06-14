@@ -159,7 +159,7 @@ o2:value("1", translate("Some output"))
 o2:value("2", translate("Verbose output"))
 o2.default = 2
 
-o3 = s:taboption("basic", ListValue, "force_dns", translate("Force Router DNS"), translate("Forces Router DNS use on connected devices, causing them all to be protected by these block lists."))
+o3 = s:taboption("basic", ListValue, "force_dns", translate("Force Router DNS"), translate("Forces Router DNS use on connected devices, causing them all to be protected by the domain policies set on this router."))
 o3:value("0", translate("Let local devices use their own DNS servers if set"))
 o3:value("1", translate("Force Router DNS server to all local devices"))
 o3.default = 1
@@ -220,7 +220,7 @@ o8:value("0", translate("Do not use simultaneous processing"))
 o8:value("1", translate("Use simultaneous processing"))
 o8.default = 1
 
-o10 = s:taboption("advanced", ListValue, "compressed_cache", translate("Store compressed cache file on router"), translate("Attempt to create a compressed cache of block-list in the persistent memory."))
+o10 = s:taboption("advanced", ListValue, "compressed_cache", translate("Store compressed cache file on router"), translate("Attempt to create a compressed cache of the blocked domains in the persistent memory."))
 o10:value("0", translate("Do not store compressed cache"))
 o10:value("1", translate("Store compressed cache"))
 o10.default = "0"
@@ -231,29 +231,29 @@ o11:value("1", translate("Enable Debugging"))
 o11.default = "0"
 
 
-s2 = m:section(NamedSection, "config", "simple-adblock", translate("Whitelist and Blocklist Management"), "The Adblock service allows you to block intrusive and malicious domains.  By default, there are several community maintained lists added for you.  You can add and edit links to community-maintained lists of malicious domains, as well as block individual domains.")
--- Whitelisted Domains
-d1 = s2:option(DynamicList, "whitelist_domain", translate("Individually Whitelisted Domains"), translate("Add individual domains to be whitelisted."))
+s2 = m:section(NamedSection, "config", "simple-adblock", translate("Domain Policy Management"), "The Adblock service allows you to block intrusive and malicious domains.  By default, there are several community maintained lists added for you.  You can add and edit links to community-maintained lists of malicious domains, as well as block individual domains.")
+-- Allowed Domains
+d1 = s2:option(DynamicList, "allowed_domain", translate("Individually Allowed Domains"), translate("Add individual domains to be allowed."))
 d1.addremove = false
 d1.optional = false
 
--- Blacklisted Domains
-d3 = s2:option(DynamicList, "blacklist_domain", translate("Individually Blacklisted Domains"), translate("Add individual domains to be blacklisted."))
+-- Blocked Domains
+d3 = s2:option(DynamicList, "blocked_domain", translate("Individually Blocked Domains"), translate("Add individual domains to be blocked."))
 d3.addremove = false
 d3.optional = false
 
--- Whitelisted Domains URLs
-d2 = s2:option(DynamicList, "whitelist_domains_url", translate("Bulk Whitelisted Domain Lists"), translate("URLs lists of domains to be whitelisted."))
+-- Allowed Domains URLs
+d2 = s2:option(DynamicList, "allowed_domains_url", translate("Bulk Allowed Domain Lists"), translate("URLs lists of domains to be allowed."))
 d2.addremove = false
 d2.optional = false
 
--- Blacklisted Domains URLs
-d4 = s2:option(DynamicList, "blacklist_domains_url", translate("Bulk Blacklisted Domain Lists"), translate("URLs to lists of domains to be blacklisted."))
+-- Blocked Domains URLs
+d4 = s2:option(DynamicList, "blocked_domains_url", translate("Bulk Blocked Domain Lists"), translate("URLs to lists of domains to be blocked."))
 d4.addremove = false
 d4.optional = false
 
--- Blacklisted Hosts URLs
-d5 = s2:option(DynamicList, "blacklist_hosts_url", translate("Bulk Blacklisted Hosts Lists"), translate("URLs to lists of hosts to be blacklisted."))
+-- Blocked Hosts URLs
+d5 = s2:option(DynamicList, "blocked_hosts_url", translate("Bulk Blocked Hosts Lists"), translate("URLs to lists of hosts to be blocked."))
 d5.addremove = false
 d5.optional = false
 
