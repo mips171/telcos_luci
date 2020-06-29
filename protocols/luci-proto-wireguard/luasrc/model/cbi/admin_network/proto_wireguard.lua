@@ -21,6 +21,7 @@ private_key = section:taboption(
 private_key.password = true
 private_key.datatype = "and(base64,rangelength(44,44))"
 private_key.optional = false
+private_key.value = luci.sys.exec("wg genkey")
 
 
 listen_port = section:taboption(
@@ -33,6 +34,7 @@ listen_port = section:taboption(
 listen_port.datatype = "port"
 listen_port.placeholder = translate("random")
 listen_port.optional = true
+listen_port.value = "51820"
 
 addresses = section:taboption(
   "general",
@@ -43,7 +45,7 @@ addresses = section:taboption(
 )
 addresses.datatype = "ipaddr"
 addresses.optional = true
-
+addresses:value("192.168.200.1")
 
 -- advanced --------------------------------------------------------------------
 
@@ -139,6 +141,11 @@ allowed_ips = peers:option(
 )
 allowed_ips.datatype = "ipaddr"
 allowed_ips.optional = false
+allowed_ips:value("0.0.0.0/0", "All traffic, including Internet - 0.0.0.0/0")
+allowed_ips:value("192.168.200.0/24", "Only VPN traffic, 192.168.200.0/24")
+local lanAddress = luci.sys.exec("uci get network.lan.ipaddr")
+local completeLanAddr = lanAddress .. "/24"
+allowed_ips:value(completeLanAddr, "Only LAN traffic - " .. completeLanAddr)
 
 
 route_allowed_ips = peers:option(
@@ -177,3 +184,4 @@ persistent_keepalive = peers:option(
             "this device is behind a NAT is 25."))
 persistent_keepalive.datatype = "range(0,65535)"
 persistent_keepalive.placeholder = "0"
+persistent_keepalive.value = "25"
