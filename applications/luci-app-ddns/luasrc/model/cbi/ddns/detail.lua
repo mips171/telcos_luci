@@ -660,7 +660,7 @@ src4 = ns:taboption("advanced", ListValue, "ipv4_source",
 	translate("IP address source") .. " [IPv4]",
 	translate("Defines the source to read systems IPv4-Address from, that will be send to the DDNS provider") )
 src4:depends("use_ipv6", "0")	-- IPv4 selected
-src4.default = "network"
+src4.default = "web"
 src4:value("network", translate("Network"))
 src4:value("web", translate("URL"))
 src4:value("interface", translate("Interface"))
@@ -710,7 +710,7 @@ src6 = ns:taboption("advanced", ListValue, "ipv6_source",
 	translate("IP address source") .. " [IPv6]",
 	translate("Defines the source to read systems IPv6-Address from, that will be send to the DDNS provider") )
 src6:depends("use_ipv6", 1)	-- IPv6 selected
-src6.default = "network"
+src6.default = "web"
 src6:value("network", translate("Network"))
 src6:value("web", translate("URL"))
 src6:value("interface", translate("Interface"))
