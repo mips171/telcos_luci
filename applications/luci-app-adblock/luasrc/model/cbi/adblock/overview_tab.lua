@@ -6,9 +6,7 @@ local uci  = require("luci.model.uci").cursor()
 local util = require("luci.util")
 local dump = util.ubus("network.interface", "dump", {})
 
-m = Map("adblock", translate("Adblock"),
-	translate("AdBlock uses public, community maintained lists of web domains that are known to host ads, intrusive content and malware.  You can protect your network from
-	this content by enabling the AdBlock feature.  Any domain in these lists will be blocked by this device."))
+m = Map("adblock", translate("Adblock"), "AdBlock uses public, community maintained lists of web domains that are known to host ads, intrusive content and malware.  You can protect your network from this content by enabling the AdBlock feature.  Any domain in these lists will be blocked by this device.")
 
 -- Main adblock options
 
@@ -45,7 +43,7 @@ o4 = s:option(ListValue, "adb_trigger", translate("Startup Trigger"),
 	.. translate("Choose 'none' to disable automatic startups, 'timed' to use a classic timeout (default 30 sec.) or select another trigger interface."))
 o4:value("none")
 o4:value("timed")
-o4:default("timed")
+o4.default = "timed"
 if dump then
 	local i, v
 	for i, v in ipairs(dump.interface) do
