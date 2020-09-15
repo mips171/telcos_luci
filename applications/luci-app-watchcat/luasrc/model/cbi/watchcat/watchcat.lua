@@ -49,11 +49,13 @@ advanced.default = "0"
 pingsize = s:option(ListValue, "pingsize", 
 		      translate("Ping Packet Size"),
 		      translate("<i>Applies to Ping Reboot and Network Restart modes</i> <br> Save data by sending smaller ping packets, "  ..
-				"or check that the link can carry large packets without fragmenting by using large packets. " ..
-				"Test with standard sized ping traffic by using the standard packet size."))
+				"or check that the link path can carry large packets without fragmenting by using packet sizes larger than Standard.  " ..
+				"Test with standard sized ping traffic by using the Standard packet size."))
 pingsize:value("small", "Small: 1 byte")
 pingsize:value("standard", "Standard: 56 bytes")
-pingsize:value("big", "Big: 88 bytes")
+pingsize:value("big", "Big: 248 bytes")
+pingsize:value("huge", "Huge: 1492 bytes")
+pingsize:value("jumbo", "Jumbo: 9000 bytes")
 pingsize.default = "small"
 pingsize:depends({advanced="1"})
 
