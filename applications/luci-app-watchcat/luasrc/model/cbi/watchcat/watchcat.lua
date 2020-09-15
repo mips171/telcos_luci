@@ -52,6 +52,7 @@ pingsize = s:option(ListValue, "pingsize",
 				"or check that the link path can carry large packets without fragmenting by using packet sizes larger than Standard.  " ..
 				"Test with standard sized ping traffic by using the Standard packet size."))
 pingsize:value("small", "Small: 1 byte")
+pingsize:value("windows", "Windows: 32 bytes")
 pingsize:value("standard", "Standard: 56 bytes")
 pingsize:value("big", "Big: 248 bytes")
 pingsize:value("huge", "Huge: 1492 bytes")
