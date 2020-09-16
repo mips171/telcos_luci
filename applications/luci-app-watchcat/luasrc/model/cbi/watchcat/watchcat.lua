@@ -3,7 +3,7 @@
 
 m = Map("system", 
 	translate("Automatic Recovery Actions"), 
-	translate("Here you can set up several actions to take based on network events, such as a loss of connectivity to a host. " ..
+	translate("Here you can set up several actions to take in the event that a host becomes unreachable. " ..
 		"Click the <b>Add</b> button at the bottom to set up more than one action."))
 
 s = m:section(TypedSection, "watchcat", "Automatic Recovery Rules", "These rules will govern how the router recovers from network events." ..
@@ -20,27 +20,27 @@ mode:value("network", "Network Restart: Restart the mobile network connection if
 
 period = s:option(Value, "period", 
 		  translate("Period"),
-		  translate("In 'Periodic Reboot' mode, it defines how often to reboot. <br>" ..
-			    "In 'Ping Reboot' mode, it defines the longest period of " .. 
+		  translate("In Periodic Reboot mode, it defines how often to reboot. <br>" ..
+			    "In Ping Reboot mode, it defines the longest period of " .. 
 				"time without a reply from the Host To Check before a reboot is engaged. <br>" ..
-				"In 'Network Restart' mode, it defines the longest period of " .. 
+				"In Network Restart mode, it defines the longest period of " .. 
 				"time without a reply from the Host to Check before the mobile data connection is restarted." ..
-			    "<br><br>The default unit is seconds, with no suffix, but you can use the " ..
-			    "suffix 'm' for minutes, 'h' for hours or 'd' " ..
-			    "for days. <br><br>Examples:<ul><li>10 seconds would be: 10</li><li>5 minutes would be: 5m</li><li>1 hour would be: 1h</li><li>1 week would be: 7d</li><ul>"))
+			    "<br><br>The default unit is seconds, without a suffix, but you can use the " ..
+			    "suffix <b>m</b> for minutes, <b>h</b> for hours or <b>d</b> " ..
+			    "for days. <br><br>Examples:<ul><li>10 seconds would be: <b>10</b> or <b>10s</b></li><li>5 minutes would be: <b>5m</b></li><li>1 hour would be: <b>1h</b></li><li>1 week would be: <b>7d</b></li><ul>"))
 
 pinghost = s:option(Value, "pinghosts", 
 		    translate("Host To Check"),
-		    translate("IP address or hostname to ping. <br><br> Examples are 8.8.8.8 or cloud.telcoantennas.com.au"))
+		    translate("IPv4 address or hostname to ping. <br><br> Examples are <b>8.8.8.8</b> or <b>cloud.telcoantennas.com.au</b>"))
 pinghost.datatype = "host(1)"
 pinghost.default = "cloud.telcoantennas.com.au"
 
 pingperiod = s:option(Value, "pingperiod", 
 		      translate("Check Interval"),
 		      translate("How often to ping the host specified above. " ..
-			    "<br><br>The default unit is seconds, with no suffix, but you can use the " ..
-			    "suffix 'm' for minutes, 'h' for hours or 'd' " ..
-			    "for days. <br><br>Examples:<ul><li>10 seconds would be: 10</li><li>5 minutes would be: 5m</li><li>1 hour would be: 1h</li><li>1 week would be: 7d</li><ul>"))
+			    "<br><br>The default unit is seconds, without a suffix, but you can use the " ..
+			    "suffix <b>m</b> for minutes, <b>h</b> for hours or <b>d</b> " ..
+			    "for days. <br><br>Examples:<ul><li>10 seconds would be: <b>10</b> or <b>10s</b></li><li>5 minutes would be: <b>5m</b></li><li>1 hour would be: <b>1h</b></li><li>1 week would be: <b>7d</b></li><ul>"))
 
 
 advanced = s:option(Flag, "advanced", "Advanced", "Show advanced options")
