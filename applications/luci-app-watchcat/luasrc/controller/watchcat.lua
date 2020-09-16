@@ -7,5 +7,5 @@ function index()
    if not nixio.fs.access("/etc/config/system") then
       return
    end
-   entry({"admin", "system", "watchcat"}, cbi("watchcat/watchcat"), _("Automatic Recovery"), 20)
+   entry({"admin", "system", "watchcat"}, cbi("watchcat/watchcat"), _("Automatic Recovery"), 10)
 end
